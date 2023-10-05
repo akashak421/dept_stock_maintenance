@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} {{ category.name }} Items {% endblock title %}
+
+{% block content %}
+<div>
+    <h2>{{ category.name }} Items</h2>
+    <br><br>
+        {% for item in items %}
+        <br>
+            <h5>{{ item.name }}</h5>
+        {% endfor %}
+
+        <br><br>
+    <a href="{% url 'add_items' %}">Back to Categories</a>
+</div>
+{% endblock content %}

@@ -18,4 +18,4 @@ def add_items(request):
 def item_list(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
     items = Item.objects.filter(category=category)
-    return render(request, 'item_list.html', {'category': category, 'items': items})
+    return render(request, 'itemlist.html', {'category': category, 'items': items})

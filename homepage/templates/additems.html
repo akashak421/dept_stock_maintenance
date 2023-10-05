@@ -2,15 +2,18 @@
 
 {% load static %}
 
-
 {% block title %} Home {% endblock title %}
-
 
 {% block content %}
 <div>
     {% for category in categories %}
-       <h4> {{ category.name }} </h4>
+        <div>
+            <h3>{{ category.name }}</h3>
+            <a href="{% url 'item_list' category.id %}">
+                <button class="ghost-pink">ADD ITEMS</button>
+            </a>
+            <br><br>
+        </div>
     {% endfor %}
 </div>
-
 {% endblock content %}
