@@ -91,8 +91,8 @@ class Tables(models.Model):
     def __str__(self):
         return self.lab_name
 
-class Board(models.model):
-     LAB_CHOICES = (
+class Board(models.Model):
+    LAB_CHOICES = (
         ('cc', 'CC Lab'),
         ('ibm', 'IBM Lab'),
         ('is', 'IS Lab'),
@@ -126,6 +126,5 @@ class Board(models.model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
     def __str__(self):
-        return self.lab_name
-
+        return (self.lab_name,self.category1,self.category2)
 

@@ -1,14 +1,19 @@
 from django import forms
-from .models import Chairs, Tables
+from .models import Chairs, Tables, Board
 
 class ChairForm(forms.ModelForm):
     class Meta:
         model = Chairs
-        fields = ['lab_name', 'categories1', 'categories2', 'categories3', 'status']
+        fields = ['lab_name', 'category1', 'category2', 'category3', 'status']
 
 
 class TableForm(forms.ModelForm):
     class Meta:
         model = Tables
-        fields = ['lab_name', 'categories1', 'categories2', 'status']
+        fields = ['lab_name', 'category1', 'category2', 'status']
+
+class BoardForm(forms.ModelForm):
+    class Meta:
+        model = Board
+        fields = ['lab_name', 'category1', 'category2', 'category3','status']
 
