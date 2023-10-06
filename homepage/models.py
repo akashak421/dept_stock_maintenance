@@ -18,8 +18,7 @@ class Item(models.Model):
         return self.name
 
 class Chairs(models.Model):
-    # name = models.CharField(max_length=100)
-    
+
     # Define choices for lab_name
     LAB_CHOICES = (
         ('cc', 'CC Lab'),
