@@ -92,7 +92,7 @@ class Tables(models.Model):
     def __str__(self):
         return self.lab_name
 
-class Board(models.model):
+class Board(models.Model):
      LAB_CHOICES = (
         ('cc', 'CC Lab'),
         ('ibm', 'IBM Lab'),
@@ -128,5 +128,46 @@ class Board(models.model):
 
     def __str__(self):
         return self.lab_name
+
+class Cupboard(models.Model):
+     LAB_CHOICES = (
+        ('cc', 'CC Lab'),
+        ('ibm', 'IBM Lab'),
+        ('is', 'IS Lab'),
+        ('project', 'Project Lab'),
+        ('research', 'Research Lab'),
+    )
+    lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
+
+    
+    CATEGORY1_CHOICES = (
+        ('steel_Cupboard', 'Steel Cupboard'),
+        ('wooden_Cupboard', 'Wooden Cupboard'),
+    )
+    CATEGORY3_CHOICES = (
+        ('No Door', 'No Door'),
+        ('Glass_Door', 'Glass Door'),
+        ('Steel_Door','Steel Door'),
+    )
+    CATEGORY2_CHOICES = (
+        ('Small', 'Small'),
+        ('Medium', 'Medium'),
+        ('Large','Large'),
+    )
+
+    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
+
+    STATUS_CHOICES = (
+        ('available', 'Available'),
+        ('not_available', 'Not Available'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+
+    def __str__(self):
+        return self.lab_name
+
+
 
 
