@@ -260,6 +260,108 @@ class Camera(models.Model):
 
 
 
+# ------------------ Electrical items -----------------
+
+
+class TubeLight(models.Model):
+    LAB_CHOICES = (
+        ('cc', 'CC Lab'),
+        ('ibm', 'IBM Lab'),
+        ('is', 'IS Lab'),
+        ('project', 'Project Lab'),
+        ('research', 'Research Lab'),
+    )
+    lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
+
+    
+    CATEGORY1_CHOICES = (
+        ('LED Bulb', 'LED Bulb'),
+        ('electrical choke', 'Electrical choke'),
+        ('only choke','only choke'),
+
+    )
+    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    
+
+    STATUS_CHOICES = (
+        ('available', 'Available'),
+        ('not_available', 'Not Available'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+
+    def __str__(self):
+        return self.lab_name
+
+
+class Fan(models.Model):
+    LAB_CHOICES = (
+        ('cc', 'CC Lab'),
+        ('ibm', 'IBM Lab'),
+        ('is', 'IS Lab'),
+        ('project', 'Project Lab'),
+        ('research', 'Research Lab'),
+    )
+    lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
+
+    
+    CATEGORY1_CHOICES = (
+        ('ceiling', 'ceiling'),
+        ('wall mount', 'wall mount'),
+        ('Stand type','Stand type'),
+
+    )
+    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    
+
+    STATUS_CHOICES = (
+        ('available', 'Available'),
+        ('not_available', 'Not Available'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+
+    def __str__(self):
+        return self.lab_name
+
+
+class Cctv(models.Model):
+    LAB_CHOICES = (
+        ('cc', 'CC Lab'),
+        ('ibm', 'IBM Lab'),
+        ('is', 'IS Lab'),
+        ('project', 'Project Lab'),
+        ('research', 'Research Lab'),
+    )
+    lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
+
+    
+    CATEGORY1_CHOICES = (
+        ('Dome Camera', 'Dome Camera'),
+        ('Bullet Camera', 'Bullet Camera'),
+        ('PTZ Camera','PTZ Camera'),
+        ('Box Camera','Box Camera'),
+        ('IP camera','IP camera'),
+
+    )
+    CATEGORY2_CHOICES = (
+        ('IR camera', 'IR camera'),
+        ('Normal', 'Normal'),
+
+
+    )
+    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    
+
+    STATUS_CHOICES = (
+        ('available', 'Available'),
+        ('not_available', 'Not Available'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+
+    def __str__(self):
+        return self.lab_name
+
+
 
     
 

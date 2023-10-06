@@ -1,5 +1,6 @@
 from django import forms
-from .models import Chairs, Tables, Board ,Cupboard,Mouse,Keyboard
+from .models import Chairs, Tables, Board ,Cupboard,Mouse,Keyboard,Camera
+from .models import TubeLight,Fan
 
 class ChairForm(forms.ModelForm):
     class Meta:
@@ -37,4 +38,22 @@ class CameraForm(forms.ModelForm):
     class Meta:
         model = Camera
         fields = ['lab_name', 'category1', 'brand','status']
+
+
+#------------------form for electrical items------------
+
+class TubeLightForm(forms.ModelForm):
+    class Meta:
+        model = TubeLight
+        fields = ['lab_name','category1','status']
+
+class FanForm(forms.ModelForm):
+    class Meta:
+        model = Fan
+        fields = ['lab_name','category1','status']
+
+class CctvForm(forms.ModelForm):
+    class Meta:
+        model = Cctv
+        fields = ['lab_name','category1','category2','status']
 

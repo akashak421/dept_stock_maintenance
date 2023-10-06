@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Category,Item,Chairs,Tables,Board,Cupboard,Keyboard,Mouse
-from .models import Camera
+from .models import Camera,TubeLight,Fan,Cctv
 
 admin.site.register(Category)
 admin.site.register(Item)
@@ -11,3 +11,6 @@ admin.site.register(Cupboard)
 admin.site.register(Keyboard)
 admin.site.register(Mouse)
 admin.site.register(Camera)
+admin.site.register(TubeLight)
+admin.site.register(Fan)
+admin.site.register(Cctv)
