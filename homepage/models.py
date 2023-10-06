@@ -92,11 +92,7 @@ class Tables(models.Model):
         return self.lab_name
 
 class Board(models.Model):
-<<<<<<< HEAD
-     LAB_CHOICES = (
-=======
     LAB_CHOICES = (
->>>>>>> 948b8b529f6dd42feb12ce69aa5ae0757ff37c76
         ('cc', 'CC Lab'),
         ('ibm', 'IBM Lab'),
         ('is', 'IS Lab'),
@@ -133,7 +129,7 @@ class Board(models.Model):
         return self.lab_name
 
 class Cupboard(models.Model):
-     LAB_CHOICES = (
+    LAB_CHOICES = (
         ('cc', 'CC Lab'),
         ('ibm', 'IBM Lab'),
         ('is', 'IS Lab'),
