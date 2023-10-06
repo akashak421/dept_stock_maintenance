@@ -28,9 +28,9 @@ def add_item_form(request, item_id):
     form = None
 
     # Define which form to use based on item_id
-    if item_id == 15:
+    if item_id == 2:
         form_class = ChairForm
-    elif item_id == 16:
+    elif item_id == 1:
         form_class = TableForm
     elif item_id == 10:
         form_class = BoardForm
