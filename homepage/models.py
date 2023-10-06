@@ -168,5 +168,43 @@ class Cupboard(models.Model):
         return self.lab_name
 
 
+#starting of consumables
+
+class Keyboard(models.Model):
+    LAB_CHOICES = (
+        ('cc', 'CC Lab'),
+        ('ibm', 'IBM Lab'),
+        ('is', 'IS Lab'),
+        ('project', 'Project Lab'),
+        ('research', 'Research Lab'),
+    )
+    lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
+
+    
+    CATEGORY1_CHOICES = (
+        ('Wireless_keyboard', 'Wireless keyboard'),
+        ('ps/2 keyboard', 'ps/2 keyboard'),
+        ('usb_keyboard','usb keyboard'),
+    )
+    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    brand = models.CharField(max_length=255, blank=True)
+
+    STATUS_CHOICES = (
+        ('available', 'Available'),
+        ('not_available', 'Not Available'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+
+    def __str__(self):
+        return self.lab_names
+
+
+
+
+    
+
+
+
+
 
 
