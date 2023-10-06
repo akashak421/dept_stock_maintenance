@@ -1,12 +1,12 @@
 from django import forms
-from .models import Chairs
+from .models import Chairs,Tables
 
 class ChairForm(forms.ModelForm):
     class Meta:
         model = Chairs
         fields = ['lab_name', 'category1', 'category2', 'category3', 'status']
 
-class ChairForm(forms.ModelForm):
+class TableForm(forms.ModelForm):
     class Meta:
         model = Tables
-        fields = ['lab_name', 'category1', 'category2', 'category3', 'status']
+        fields = ['lab_name', 'category1', 'category2', 'status']

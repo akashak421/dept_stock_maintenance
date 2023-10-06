@@ -29,9 +29,9 @@ def add_item_chair(request, item_id):
 
     # Define which form to use based on item_id
     if item_id == 15:
-        form = ChairForm(request.POST or None)
-    elif item_id == 1:
-        form = TableForm(request.POST or None)
+        form = ChairForm(request.POST)
+    elif item_id == 16:
+        form = TableForm(request.POST)
 
     if request.method == 'POST':
         if form is not None:
@@ -39,6 +39,6 @@ def add_item_chair(request, item_id):
                 form.save()
                 # You can customize the response based on your requirements
                 return render(request, 'additemchair.html', {'form': form})
-
+    form.novalidate = True
     return render(request, 'additemchair.html', {'form': form})
 

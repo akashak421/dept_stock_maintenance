@@ -57,7 +57,7 @@ class Chairs(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
     def __str__(self):
-        return self.name
+        return self.lab_name
     
 class Tables(models.Model):
     # name = models.CharField(max_length=100)
@@ -77,21 +77,17 @@ class Tables(models.Model):
     )
     CATEGORY2_CHOICES = (
         ('steel', 'Steel'),
-        ('plastic', 'Plastic'),
         ('wooden', 'Wooden'),
-        ('fiber', 'Fiber'),
-    )
-    CATEGORY3_CHOICES = (
-        ('rolling', 'Rolling'),
-        ('non_rolling', 'Non-Rolling'),
     )
     
     category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
     category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
+
     STATUS_CHOICES = (
         ('available', 'Available'),
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
 
+    def __str__(self):
+        return self.lab_name

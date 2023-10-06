@@ -3,13 +3,29 @@
 {% block title %} Add Item {% endblock title %}
 
 {% block content %}
-<h2>Add chair item</h2>
+<h2>Add Item</h2>
 
-<form method="post">
+<!-- Add the 'novalidate' attribute to disable client-side validation -->
+<form method="post" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Add Item">
 </form>
 
-<a href="{% url 'add_items' %}"> <button class="ghost-pink">Back to Categories</button></a>
+<button id="goBackButton" class="ghost-pink">Go Back</button>
+</div> <!-- Closing content div -->
+
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the "Go Back" button by its ID
+    var goBackButton = document.getElementById("goBackButton");
+
+    // Add a click event listener to the button
+    goBackButton.addEventListener("click", function() {
+        // Use the browser's history object to go back
+        window.history.back();
+    });
+});
+</script> -->
+
 {% endblock content %}
