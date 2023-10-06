@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
-from .forms import ChairForm,TableForm,BoardForm
+from .forms import ChairForm,TableForm,BoardForm,CupBoardForm
 
 
 from homepage.models import Category, Item
@@ -34,7 +34,8 @@ def add_item_form(request, item_id):
         form_class = TableForm
     elif item_id == 10:
         form_class = BoardForm
-
+    elif item_id == 11:
+        form_class = CupBoardForm
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
