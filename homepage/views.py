@@ -38,7 +38,7 @@ def add_item_chair(request, item_id):
             if form.is_valid():
                 form.save()
                 # You can customize the response based on your requirements
-                return render(request, 'additemchair.html', {'form': form})
+                return redirect('add_item_chair', item_id=item_id)
     form.novalidate = True
     return render(request, 'additemchair.html', {'form': form})
 

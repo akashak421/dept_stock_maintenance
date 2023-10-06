@@ -9,8 +9,10 @@
 <form method="post" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
+    <br>
     <input type="submit" value="Add Item">
 </form>
+<br><br>
 
 <button id="goBackButton" class="ghost-pink">Go Back</button>
 </div> <!-- Closing content div -->
