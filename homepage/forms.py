@@ -1,5 +1,5 @@
 from django import forms
-from .models import Chairs, Tables, Board ,Cupboard
+from .models import Chairs, Tables, Board ,Cupboard, Keyboard
 
 class ChairForm(forms.ModelForm):
     class Meta:
