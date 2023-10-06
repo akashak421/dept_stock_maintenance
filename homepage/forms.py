@@ -22,3 +22,8 @@ class CupBoardForm(forms.ModelForm):
         model = Cupboard
         fields = ['lab_name', 'category1', 'category2', 'category3','status']
 
+class KeyboardForm(forms.ModelForm):
+    class Meta:
+        model = Keyboard
+        fields = ['lab_name', 'category1', 'brand','status']
+
