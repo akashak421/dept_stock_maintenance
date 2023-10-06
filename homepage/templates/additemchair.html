@@ -3,7 +3,7 @@
 {% block title %} Add Item {% endblock title %}
 
 {% block content %}
-<h2>Add Item</h2>
+<h2>Add chair item</h2>
 
 <form method="post">
     {% csrf_token %}
@@ -11,5 +11,5 @@
     <input type="submit" value="Add Item">
 </form>
 
-<a href="{% url 'add_items' %}">Back to Categories</a>
+<a href="{% url 'add_items' %}"> <button class="ghost-pink">Back to Categories</button></a>
 {% endblock content %}

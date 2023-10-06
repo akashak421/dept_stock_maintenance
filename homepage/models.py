@@ -18,7 +18,7 @@ class Item(models.Model):
         return self.name
 
 class Chairs(models.Model):
-    name = models.CharField(max_length=100)
+    # name = models.CharField(max_length=100)
     
     # Define choices for lab_name
     LAB_CHOICES = (
@@ -46,9 +46,9 @@ class Chairs(models.Model):
         ('non_rolling', 'Non-Rolling'),
     )
     
-    categories1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    categories2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    categories3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
+    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
     
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -58,3 +58,40 @@ class Chairs(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Tables(models.Model):
+    # name = models.CharField(max_length=100)
+    LAB_CHOICES = (
+        ('cc', 'CC Lab'),
+        ('ibm', 'IBM Lab'),
+        ('is', 'IS Lab'),
+        ('project', 'Project Lab'),
+        ('research', 'Research Lab'),
+    )
+    lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
+
+    CATEGORY1_CHOICES = (
+        ('conference_table', 'Conference Table'),
+        ('staff_table', 'Staff Table'),
+        ('desktop_table','Desktop Table'),
+    )
+    CATEGORY2_CHOICES = (
+        ('steel', 'Steel'),
+        ('plastic', 'Plastic'),
+        ('wooden', 'Wooden'),
+        ('fiber', 'Fiber'),
+    )
+    CATEGORY3_CHOICES = (
+        ('rolling', 'Rolling'),
+        ('non_rolling', 'Non-Rolling'),
+    )
+    
+    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
+    STATUS_CHOICES = (
+        ('available', 'Available'),
+        ('not_available', 'Not Available'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+

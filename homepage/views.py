@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
-from .forms import ItemForm
+from .forms import ChairForm,TableForm
 
 
 from homepage.models import Category, Item
@@ -22,13 +22,23 @@ def item_list(request, category_id):
     items = Item.objects.filter(category=category)
     return render(request, 'itemlist.html', {'category': category, 'items': items})
 
-def add_item_chair(request,item_id):
+
+def add_item_chair(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
+    form = None
+
+    # Define which form to use based on item_id
+    if item_id == 15:
+        form = ChairForm(request.POST or None)
+    elif item_id == 1:
+        form = TableForm(request.POST or None)
+
     if request.method == 'POST':
-        form = ItemForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return(request, 'additemchair.html', {'form': form})  # Redirect to a success page
-    else:
-        form = ItemForm()
+        if form is not None:
+            if form.is_valid():
+                form.save()
+                # You can customize the response based on your requirements
+                return render(request, 'additemchair.html', {'form': form})
+
     return render(request, 'additemchair.html', {'form': form})
+

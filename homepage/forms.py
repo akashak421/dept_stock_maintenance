@@ -1,7 +1,12 @@
 from django import forms
 from .models import Chairs
 
-class ItemForm(forms.ModelForm):
+class ChairForm(forms.ModelForm):
     class Meta:
         model = Chairs
-        fields = ['name', 'lab_name', 'categories1', 'categories2', 'categories3', 'status']
+        fields = ['lab_name', 'category1', 'category2', 'category3', 'status']
+
+class ChairForm(forms.ModelForm):
+    class Meta:
+        model = Tables
+        fields = ['lab_name', 'category1', 'category2', 'category3', 'status']
