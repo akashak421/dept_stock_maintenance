@@ -1,5 +1,5 @@
 from django import forms
-from .models import Chairs, Tables, Board ,Cupboard
+from .models import Chairs, Tables, Board ,Cupboard,Mouse,Keyboard
 
 class ChairForm(forms.ModelForm):
     class Meta:
@@ -25,5 +25,16 @@ class CupBoardForm(forms.ModelForm):
 class KeyboardForm(forms.ModelForm):
     class Meta:
         model = Keyboard
+        fields = ['lab_name', 'category1', 'brand','status']
+
+
+class MouseForm(forms.ModelForm):
+    class Meta:
+        model = Mouse
+        fields = ['lab_name', 'category1', 'brand','status']
+
+class CameraForm(forms.ModelForm):
+    class Meta:
+        model = Camera
         fields = ['lab_name', 'category1', 'brand','status']
 
