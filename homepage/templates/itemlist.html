@@ -11,7 +11,7 @@
     {% for item in items %}
     <br>
         <h5>{{ item.name }}</h5>
-        <a href="{% url 'add_item_chair' item.id %}">
+        <a href="{% url 'add_item_form' item.id %}">
             <button class="ghost-pink">Add</button>
         </a><br>
     {% endfor %}

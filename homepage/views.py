@@ -23,7 +23,7 @@ def item_list(request, category_id):
     return render(request, 'itemlist.html', {'category': category, 'items': items})
 
 
-def add_item_chair(request, item_id):
+def add_item_form(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
     form = None
 
@@ -41,7 +41,7 @@ def add_item_chair(request, item_id):
             form.save()
             form = form_class()
             # Clear the form by redirecting to the same page
-            return redirect('add_item_chair', item_id=item_id)
+            return redirect('add_item_form', item_id=item_id)
     else:
         form = form_class()
 
@@ -49,4 +49,4 @@ def add_item_chair(request, item_id):
     if not request.method == 'POST' or form.errors:
         form.novalidate = True
 
-    return render(request, 'additemchair.html', {'form': form})
+    return render(request, 'additemform.html', {'form': form})
