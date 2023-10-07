@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Add Item{{ item }}{% endblock title %}
+{% block title %} Add {{ item.name }} Item{% endblock title %}
 
 {% block content %}<style>/* CSS for the form container */
     .form-container {
@@ -18,7 +18,7 @@
         flex-direction: column;
         margin-bottom: 20px;
     }
-    .label_style{
+    .label_style,h2{
         font-weight: bold;
         font-size: 30px;
         font-family:Georgia, 'Times New Roman', Times, serif;
@@ -51,7 +51,7 @@
     }
     </style>
 <div class="form-container"><center>
-    <h2>Add the {{ item.name }} item here</h2></center>
+    <h2>Add the {{ item.name }} Item </h2></center>
 
     <!-- Add the 'novalidate' attribute to disable client-side validation -->
     <form method="post" novalidate class="item-form">
