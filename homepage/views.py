@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
-from .forms import CameraForm, CctvForm, ChairForm, FanForm, MouseForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
+from .forms import BiometricForm, CameraForm, CctvForm, ChairForm, Connecting_WireForm, CpuForm, Extension_BoxForm, FanForm, MonitorForm, MouseForm, Network_SwitchForm, PrinterForm, Projector_ScreenForm, ProjectorForm, SocketForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
 
 
 from homepage.models import Category, Item
@@ -39,6 +39,8 @@ def add_item_form(request, item_id):
         form_class = FanForm
     elif item_id == 5:
         form_class = CctvForm
+    elif item_id == 6:
+        form_class = BiometricForm
     elif item_id == 7:
         form_class = KeyboardForm
     elif item_id == 8:
@@ -49,13 +51,31 @@ def add_item_form(request, item_id):
         form_class = BoardForm
     elif item_id == 11:
         form_class = CupBoardForm
+    elif item_id == 12:
+        form_class = MonitorForm
+    elif item_id == 13:
+        form_class = CpuForm
+    elif item_id == 14:
+        form_class = Network_SwitchForm
+    elif item_id == 15:
+        form_class = ProjectorForm
+    elif item_id == 16:
+        form_class = PrinterForm
+    elif item_id == 17:
+        form_class = SocketForm
+    elif item_id == 18:
+        form_class = Projector_ScreenForm
+    elif item_id == 19:
+        form_class = Extension_BoxForm
+    elif item_id == 20:
+        form_class = Connecting_WireForm
     if request.method == 'POST':
         form = form_class(request.POST)
         if form.is_valid():
             form.save()
             form = form_class()
             # Clear the form by redirecting to the same page
-            return redirect('add_item_form', item_id=item_id)
+            return redirect('add_item_form', {'item':item_name},item_id=item_id)
     else:
         form = form_class()
 
@@ -63,4 +83,4 @@ def add_item_form(request, item_id):
     if not request.method == 'POST' or form.errors:
         form.novalidate = True
 
-    return render(request, 'additemform.html',{'item_name':item_name,'form': form})
+    return render(request, 'additemform.html',{'form': form})
