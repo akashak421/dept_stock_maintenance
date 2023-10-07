@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
-from .forms import ChairForm,TableForm,BoardForm,CupBoardForm
+from .forms import CameraForm, CctvForm, ChairForm, FanForm, MouseForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
 
 
 from homepage.models import Category, Item
@@ -26,12 +26,25 @@ def item_list(request, category_id):
 def add_item_form(request, item_id):
     item = get_object_or_404(Item, pk=item_id)
     form = None
+    item_name=item.name
 
     # Define which form to use based on item_id
-    if item_id == 2:
-        form_class = ChairForm
-    elif item_id == 1:
+    if item_id == 1:
         form_class = TableForm
+    elif item_id == 2:
+        form_class = ChairForm
+    elif item_id == 3:
+        form_class = TubeLightForm
+    elif item_id == 4:
+        form_class = FanForm
+    elif item_id == 5:
+        form_class = CctvForm
+    elif item_id == 7:
+        form_class = KeyboardForm
+    elif item_id == 8:
+        form_class = MouseForm
+    elif item_id == 9:
+        form_class = CameraForm
     elif item_id == 10:
         form_class = BoardForm
     elif item_id == 11:
@@ -50,4 +63,4 @@ def add_item_form(request, item_id):
     if not request.method == 'POST' or form.errors:
         form.novalidate = True
 
-    return render(request, 'additemform.html', {'form': form})
+    return render(request, 'additemform.html',{'item_name':item_name,'form': form})

@@ -1,8 +1,13 @@
 from django import forms
+<<<<<<< HEAD
 from .models import Chairs, Tables, Board ,Cupboard,Mouse,Keyboard,Camera
 from .models import TubeLight,Fan,Cctv,Biometric
 from .models import Monitor,Cpu,Network_Switch
 from .models import Projector,Printer,Socket
+=======
+from .models import Cctv, Chairs, Tables, Board ,Cupboard,Mouse,Keyboard,Camera,TubeLight,Fan
+
+>>>>>>> a3bcd06697aed78c2c12b837f0a26dcb3b2528c0
 
 class ChairForm(forms.ModelForm):
     class Meta:

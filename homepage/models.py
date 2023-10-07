@@ -187,7 +187,7 @@ class Keyboard(models.Model):
         ('usb_keyboard','usb keyboard'),
     )
     category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
+    brand = models.CharField(max_length=255, blank=False)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
