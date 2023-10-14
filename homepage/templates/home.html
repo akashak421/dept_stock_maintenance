@@ -1,16 +1,35 @@
 {% extends "base.html" %}
-
 {% load static %}
-
 
 {% block title %} Home {% endblock title %}
 
-
 {% block content %}
-
     <div style="color:#ea2088; font-style: bold; font-size: 3rem; border-bottom: 1px solid #fff">Welcome, {{ request.user.username }}</div>
-
     <br>
+    <div id="image-container">
+        <a id="image-link" href="{% url 'is_lab' %}">
+            <img id="rotating-image" src="{% static 'images/islab.jpeg' %}" alt="Rotating Image" style="width: 100%; height: 80vh; object-fit: cover;">
+        </a>
+    </div>
+</div>
 
+<script>
+    // Array of image URLs to rotate
+    var imageUrls = [{% for image in image_urls %}"{% static image %}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    var currentIndex = 0;
 
+    function rotateImage() {
+        // Update the image source with the next URL
+        document.getElementById('rotating-image').src = imageUrls[currentIndex];
+
+        document.getElementById('image-link').href = imageUrls[currentIndex].replace('/static/images/', '/lab/').replace('.jpeg', '/');
+
+        currentIndex = (currentIndex + 1) % imageUrls.length; // Loop back to the first image when the last one is reached
+    }
+
+    // Rotate the image every 5 seconds
+    setTimeout(function () {
+        setInterval(rotateImage, 5000);
+    }, 1000);
+</script>
 {% endblock content %}

@@ -11,7 +11,14 @@ from homepage.models import Category, Item
 class HomeView(View):
     template_name = "home.html"
     def get(self, request):
-        return render(request,'home.html')
+        image_urls = [
+        'images/islab.jpeg',
+        'images/ibmlab.jpeg',
+        'images/cclab.jpeg',
+        'images/projectlab.jpeg',
+        'images/researchlab.jpeg'
+    ]
+        return render(request, 'home.html', {'image_urls': image_urls})
 
 def add_items(request):
     categories = Category.objects.all()  # Get all categories
@@ -85,3 +92,15 @@ def add_item_form(request, item_id):
         form.novalidate = True
 
     return render(request, 'additemform.html',{'item': item,'form': form})
+
+
+def research_lab(request):
+    return render(request,'reserach_lab.html')
+def project_lab(request):
+    return render(request,'project_lab.html')
+def ibm_lab(request):
+    return render(request,'ibm_lab.html')
+def is_lab(request):
+    return render(request,'is_lab.html')
+def cc_lab(request):
+    return render(request,'cc_lab.html')
