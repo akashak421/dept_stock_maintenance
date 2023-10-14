@@ -78,14 +78,14 @@ class CpuForm(forms.ModelForm):
 class Network_SwitchForm(forms.ModelForm):
     class Meta:
         model = Network_Switch
-        fields = ['lab_name','category1','category2','brand']
+        fields = ['lab_name','switch_type','brand','model']
 
 #----------------------------form of miscelleneous------------------------
 
 class ProjectorForm(forms.ModelForm):
     class Meta:
         model = Projector
-        fields = ['lab_name','brand','Mounting_Options']
+        fields = ['lab_name','brand','mounting_options']
 
 class PrinterForm(forms.ModelForm):
     class Meta:
@@ -95,20 +95,20 @@ class PrinterForm(forms.ModelForm):
 class SocketForm(forms.ModelForm):
     class Meta:
         model = Socket
-        fields = ['lab_name','category1','category2','category3']
+        fields = ['lab_name','material_type','model','capacity']
 
 class Projector_ScreenForm(forms.ModelForm):
     class Meta:
         model = Projector_Screen
-        fields = ['lab_name','category1','brand']
+        fields = ['lab_name','brand']
 
 class Extension_BoxForm(forms.ModelForm):
     class Meta:
         model = Extension_Box
-        fields = ['lab_name','category1','category2','category3']
+        fields = ['lab_name','material_type','model','ampere_rating']
 
 class Connecting_WireForm(forms.ModelForm):
     class Meta:
         model = Connecting_Wire
-        fields = ['lab_name','category1','quantity']
+        fields = ['lab_name','wire_type','quantity']
 

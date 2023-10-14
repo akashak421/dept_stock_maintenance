@@ -440,10 +440,23 @@ class Monitor(models.Model):
         ('projectlab', 'Project Lab'),
         ('researchlab', 'Research Lab'),
     )
+    BRAND_CHOICES = (
+        ('Dell', 'Dell'),
+        ('HP', 'HP'),
+        ('LG', 'LG'),
+        ('Acer', 'Acer'),
+        ('Other', 'Other'),
+    )
+    MODEL_CHOICES = (
+        ('Dell Ultrasharp U2719DX', 'Dell Ultrasharp U2719DX'),
+        ('HP Pavilion 22CWA', 'HP Pavilion 22CWA'),
+        ('LG 27UK850-W', 'LG 27UK850-W'),
+        ('Acer Predator X27', 'Acer Predator X27'),
+        ('Other', 'Other')
+    )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
-    # category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
-    model = models.CharField(max_length=255, blank=True)
+    brand = models.CharField(max_length=50, choices=BRAND_CHOICES)
+    model = models.CharField(max_length=50, choices=MODEL_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -463,10 +476,15 @@ class Cpu(models.Model):
         ('projectlab', 'Project Lab'),
         ('researchlab', 'Research Lab'),
     )
-    lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
-    # category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)    
-       
+    BRAND_CHOICES = (
+        ('IBM', 'IBM'),
+        ('Qualcomm', 'Qualcomm'),
+        ('AMD (Advanced Micro Devices)', 'AMD (Advanced Micro Devices)'),
+        ('Intel', 'Intel'),
+        ('Other', 'Other'),
+    )
+    lab_name = models.CharField(max_length=50, choices=LAB_CHOICES)
+    brand = models.CharField(max_length=50, choices=BRAND_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -488,16 +506,32 @@ class Network_Switch(models.Model):
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
     CATEGORY1_CHOICES = (
-        ('', ''),
-        ('', ''),
+        ('Fast Ethernet Switch', 'Fast Ethernet Switch'),
+        ('Gigabit Ethernet Switch', 'Gigabit Ethernet Switch'),
+        ('Smart Switch', 'Smart Switch'),
+        ('Layer 3 Switch', 'Layer 3 Switch'),
+        ('Layer 2 Switch', 'Layer 2 Switch'),
+        ('Other', 'Other'),
     )
-    CATEGORY2_CHOICES = (
-        ('', ''),
-        ('', ''),
+    BRAND_CHOICES = (
+        ('TP-Link', 'TP-Link'),
+        ('HPE (Hewlett Packard Enterprise)', 'HPE (Hewlett Packard Enterprise)'),
+        ('Ubiquiti', 'Ubiquiti'),
+        ('D-Link', 'D-Link'),
+        ('Huawei', 'Huawei'),
+        ('Other', 'Other'),
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
+    MODEL_CHOICES = (
+        ('TP-Link Smart Series', 'TP-Link Smart Series'),
+        ('HPE FlexNetwork 5130 Series', 'HPE FlexNetwork 5130 Series'),
+        ('Ubiquiti EdgeSwitch Series', 'Ubiquiti EdgeSwitch Series'),
+        ('D-Link DGS Series:', 'D-Link DGS Series:'),
+        ('Huawei S5700 Series:', 'Huawei S5700 Series:'),
+        ('Other', 'Other'),
+    )
+    switch_type = models.CharField(max_length=50, choices=CATEGORY1_CHOICES)
+    brand = models.CharField(max_length=50, choices=MODEL_CHOICES)
+    model = models.CharField(max_length=50, choices=BRAND_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -520,8 +554,15 @@ class Projector(models.Model):
         ('projectlab', 'Project Lab'),
         ('researchlab', 'Research Lab'),
     )
+    BRAND_CHOICES = (
+        ('Epson','Epson'),
+        ('Sony','Sony'),
+        ('ViewSonic','ViewSonic'),
+        ('LG','LG'),
+        ('Other','Other'),
+    )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
+    brand = models.CharField(max_length=20, choices=BRAND_CHOICES)
 
     Mounting_Options = (
         ('wall mounts', 'wall mounts'),
@@ -529,8 +570,8 @@ class Projector(models.Model):
         ('tripod mounts', 'tripod mounts'),
     )
 
-    Mounting_Options = models.CharField(max_length=20, choices=Mounting_Options)
-    
+    mounting_options = models.CharField(max_length=20, choices=Mounting_Options)
+
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -551,9 +592,25 @@ class Printer(models.Model):
         ('projectlab', 'Project Lab'),
         ('researchlab', 'Research Lab'),
     )
+    BRAND_CHOICES = (
+        ('Dell', 'Dell'),
+        ('Samsung', 'Samsung'),
+        ('Epson', 'Epson'),
+        ('Canon', 'Canon'),
+        ('HP (Hewlett-Packard)', 'HP (Hewlett-Packard)'),
+        ('Other', 'Other'),
+    )
+    MODEL_CHOICES = (
+        ('Dell C1760nw', 'Dell C1760nw'),
+        ('Samsung Xpress C1860FW', 'Samsung Xpress C1860FW'),
+        ('Epson EcoTank ET-2760', 'Epson EcoTank ET-2760'),
+        ('Canon PIXMA TS9120', 'Canon PIXMA TS9120'),
+        ('HP LaserJet Pro M281fdw', 'HP LaserJet Pro M281fdw'),
+        ('Other', 'Other'),
+    )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
-    model = models.CharField(max_length=255, blank=True)
+    brand = models.CharField(max_length=255, choices=BRAND_CHOICES)
+    model = models.CharField(max_length=255, choices=MODEL_CHOICES)
 
 
 
@@ -591,14 +648,14 @@ class Socket(models.Model):
     )
     CATEGORY3_CHOICES = (
         ('5_AMP', '5_AMP'),
+        ('10_AMP', '10_AMP'),
         ('15_AMP', '15_AMP'),
-        
+        ('20_AMP', '20_AMP'),
+        ('25_AMP', '25_AMP'),
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
-
-   
+    material_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    model = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    capacity = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -620,13 +677,14 @@ class Projector_Screen(models.Model):
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
-    CATEGORY1_CHOICES = (
-        ('Tripod', 'Tripod'),
-        ('Wall_Mount', 'Wall_Mount'),
+    BRAND_CHOICES = (
+        ('Screen Innovations', 'Screen Innovations'),
+        ('Elite Screens', 'Elite Screens'),
+        ('Visual Apex', 'Visual Apex'),
+        ('Grandview', 'Grandview'),
+        ('Other', 'Other'),
     )
-
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
+    brand = models.CharField(max_length=20, choices=BRAND_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -662,12 +720,14 @@ class Extension_Box(models.Model):
     )
     CATEGORY3_CHOICES = (
         ('5_AMP', '5_AMP'),
+        ('10_AMP', '10_AMP'),
         ('15_AMP', '15_AMP'),
-        
+        ('20_AMP', '20_AMP'),
+        ('25_AMP', '25_AMP'),
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
+    material_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    model = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    ampere_rating = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
 
    
 
@@ -700,7 +760,7 @@ class Connecting_Wire(models.Model):
         ('OTHERS', 'OTHERS'),
     )
 
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    wire_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
     quantity = models.IntegerField(null=True, blank=True)
 
     STATUS_CHOICES = (
@@ -713,7 +773,6 @@ class Connecting_Wire(models.Model):
     def __str__(self):
         return self.lab_name
 
-    
 
 
 
