@@ -2,47 +2,139 @@
 {% block title %} Lab Items {% endblock title %}
 
 {% block content %}
+<style>
+    td,th {
+        color: white;
+        text-align: center;
+    }
+    </style>
     <center>
-        <h1>IBM LAB</h1><br><br>
-        <p>Number of Chairs: {{ chair_count }}</p>
-        <p>Number of Tables: {{ table_count }}</p>
-        <p>Number of Projectors: {{ projector_count }}</p>
-        <p>Number of Printers: {{ printer_count }}</p>
-        <p>Number of Network Switches: {{ switch_count }}</p>
-        <p>Number of Projector Screens: {{ screen_count }}</p>
-        <p>Number of Biometric Devices: {{ biometric_count }}</p>
-        <p>Number of Tube Lights: {{ tubelight_count }}</p>
-        <p>Number of Fans: {{ fan_count }}</p>
-        <p>Number of CCTV Cameras: {{ cctv_count }}</p>
-        <p>Number of Keyboards: {{ keyboard_count }}</p>
-        <p>Number of Mouse: {{ mouse_count }}</p>
-        <p>Number of Cameras: {{ camera_count }}</p>
-        <p>Number of Boards: {{ board_count }}</p>
-        <p>Number of Cupboards: {{ cupboard_count }}</p>
-        <p>Number of Monitors: {{ monitor_count }}</p>
-        <p>Number of CPUs: {{ cpu_count }}</p>
-        <p>Number of Sockets: {{ socket_count }}</p>
-        <p>Number of Extension Boxes: {{ extension_box_count }}</p>
-        <p>Number of Connecting Wires: {{ connecting_wire_count }}</p>
+        <h1>IS Lab</h1><br>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <td>Number of Chairs:</td>
+                <td>{{ chair_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Tables:</td>
+                <td>{{ table_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Projectors:</td>
+                <td>{{ projector_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Printers:</td>
+                <td>{{ printer_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Network Switches:</td>
+                <td>{{ switch_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Projector Screens:</td>
+                <td>{{ screen_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Biometric Devices:</td>
+                <td>{{ biometric_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Tube Lights:</td>
+                <td>{{ tubelight_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Fans:</td>
+                <td>{{ fan_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of CCTV Cameras:</td>
+                <td>{{ cctv_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Keyboards:</td>
+                <td>{{ keyboard_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Mice:</td>
+                <td>{{ mouse_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Cameras:</td>
+                <td>{{ camera_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Boards:</td>
+                <td>{{ board_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Cupboards:</td>
+                <td>{{ cupboard_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Monitors:</td>
+                <td>{{ monitor_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of CPUs:</td>
+                <td>{{ cpu_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Sockets:</td>
+                <td>{{ socket_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Extension Boxes:</td>
+                <td>{{ extension_box_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Connecting Wires:</td>
+                <td>{{ connecting_wire_count }}</td>
+            </tr>
+        </table>
     </center>
-</center>
-<!-- lab_template.html -->
-    <h1>{{ lab }} Lab</h1>
 
     <h2>Chair Counts:</h2>
-    <ul>
+    <table>
+        <tr>
+            <th>Combination</th>
+            <th>Count</th>
+        </tr>
         {% for combination, count in chair_counts.items %}
-        <li>
-            Combination: {{lab}},
-            Arms: {{ combination.0 }}, 
-            Material: {{ combination.1 }}, 
-            Rolling: {{ combination.2 }} 
-            Count: {{ count }}
-        </li>
+        <tr>
+            <td>
+                Arms: {{ combination.0 }},
+                Material: {{ combination.1 }},
+                Rolling: {{ combination.2 }}
+            </td>
+            <td>{{ count }}</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </table>
 
-    <!-- Add similar sections for other item categories -->
+    <!-- <h2>Table Counts:</h2>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Material</th>
+            <th>Status</th>
+            <th>Count</th>
+        </tr>
+        {% for item in table_counts %}
+        <tr>
+            <td>{{ item.0.type }}</td>
+            <td>{{ item.0.material }}</td>
+            <td>{{ item.0.status }}</td>
+            <td>{{ item.1 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    Add similar tables for other item categories -->
 
 </body>
 </html>

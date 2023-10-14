@@ -3,7 +3,7 @@
 
 {% block content %}
     <center>
-        <h1>IBM LAB</h1><br><br>
+        <h1>{{ lab }} Lab</h1><br>
         <p>Number of Chairs: {{ chair_count }}</p>
         <p>Number of Tables: {{ table_count }}</p>
         <p>Number of Projectors: {{ projector_count }}</p>
@@ -25,16 +25,15 @@
         <p>Number of Extension Boxes: {{ extension_box_count }}</p>
         <p>Number of Connecting Wires: {{ connecting_wire_count }}</p>
     </center>
-    <h1>{{ lab }} Lab</h1>
 
     <h2>Chair Counts:</h2>
     <ul>
         {% for combination, count in chair_counts.items %}
         <li>
             Combination: {{lab}},
-            Arms: {{ combination.0 }},
-            Material: {{ combination.1 }},
-            Rolling: {{ combination.2 }}
+            Arms: {{ combination.0 }}, 
+            Material: {{ combination.1 }}, 
+            Rolling: {{ combination.2 }} 
             Count: {{ count }}
         </li>
         {% endfor %}

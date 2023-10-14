@@ -772,10 +772,3 @@ class Connecting_Wire(models.Model):
 
     def __str__(self):
         return self.lab_name
-
-
-
-
-
-
-
