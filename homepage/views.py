@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
 from django.contrib import messages
+from itertools import product
 
 from .forms import BiometricForm, CameraForm, CctvForm, ChairForm, Connecting_WireForm, CpuForm, Extension_BoxForm, FanForm, MonitorForm, MouseForm, Network_SwitchForm, PrinterForm, Projector_ScreenForm, ProjectorForm, SocketForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
 
@@ -86,106 +87,92 @@ def add_item_form(request, item_id):
             return redirect('add_item_form',item_id=item_id)
     else:
         form = form_class()
-
-    # If the form was not submitted or there are form errors, do not clear the form
     if not request.method == 'POST' or form.errors:
         form.novalidate = True
 
     return render(request, 'additemform.html',{'item': item,'form': form})
 
 
-def research_lab(request):
-    lab=research_lab
-    # Calculate counts for different item categories
-    chair_count = Chairs.objects.filter(lab_name=lab).count()
-    table_count = Tables.objects.filter(lab_name=lab).count()
-    projector_count = Projector.objects.filter(lab_name=lab).count()
-    printer_count = Printer.objects.filter(lab_name=lab).count()
-    switch_count = Network_Switch.objects.filter(lab_name=lab).count()
-    screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
+# def lab_view(request, lab):
+    # template_name = f'{lab}.html'
+    # chair_count = Chairs.objects.filter(lab_name=lab).count()
+    # table_count = Tables.objects.filter(lab_name=lab).count()
+    # projector_count = Projector.objects.filter(lab_name=lab).count()
+    # printer_count = Printer.objects.filter(lab_name=lab).count()
+    # switch_count = Network_Switch.objects.filter(lab_name=lab).count()
+    # screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # biometric_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # tubelight_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # fan_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # cctv_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # keyboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # mouse_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # camera_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # board_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # cupboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # monitor_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # cpu_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # socket_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # extension_box_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # connecting_wire_count = Projector_Screen.objects.filter(lab_name=lab).count()
 
-    return render(request, 'reserach_lab.html', {
-        'lab': lab,
-        'chair_count': chair_count,
-        'table_count': table_count,
-        'projector_count': projector_count,
-        'printer_count': printer_count,
-        'switch_count': switch_count,
-        'screen_count': screen_count,
-    })
-def project_lab(request):
-    lab='cc'
-    # Calculate counts for different item categories
-    chair_count = Chairs.objects.filter(lab_name=lab).count()
-    table_count = Tables.objects.filter(lab_name=lab).count()
-    projector_count = Projector.objects.filter(lab_name=lab).count()
-    printer_count = Printer.objects.filter(lab_name=lab).count()
-    switch_count = Network_Switch.objects.filter(lab_name=lab).count()
-    screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # return render(request, template_name, {
+    #     'lab': lab,
+    #     'chair_count': chair_count,
+    #     'table_count': table_count,
+    #     'projector_count': projector_count,
+    #     'printer_count': printer_count,
+    #     'switch_count': switch_count,
+    #     'screen_count': screen_count,
+    #     'biometric_count' : biometric_count,
+    #     'tubelight_count' : tubelight_count,
+    #     'fan_count' : fan_count,
+    #     'cctv_count' : cctv_count,
+    #     'keyboard_count' : keyboard_count,
+    #     'mouse_count' : mouse_count,
+    #     'camera_count' : camera_count,
+    #     'board_count' : board_count,
+    #     'cupboard_count' : cupboard_count,
+    #     'monitor_count' : monitor_count,
+    #     'cpu_count' :cpu_count,
+    #     'socket_count' : socket_count,
+    #     'extension_box_count' : extension_box_count,
+    #     'connecting_wire_count' : connecting_wire_count,
+    # })
 
-    return render(request, 'project_lab.html', {
-        'lab': lab,
-        'chair_count': chair_count,
-        'table_count': table_count,
-        'projector_count': projector_count,
-        'printer_count': printer_count,
-        'switch_count': switch_count,
-        'screen_count': screen_count,
-    })
-def ibm_lab(request):
-    lab='ibm'
-    # Calculate counts for different item categories
-    chair_count = Chairs.objects.filter(lab_name=lab).count()
-    table_count = Tables.objects.filter(lab_name=lab).count()
-    projector_count = Projector.objects.filter(lab_name=lab).count()
-    printer_count = Printer.objects.filter(lab_name=lab).count()
-    switch_count = Network_Switch.objects.filter(lab_name=lab).count()
-    screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
 
-    return render(request, 'ibm_lab.html', {
-        'lab': lab,
-        'chair_count': chair_count,
-        'table_count': table_count,
-        'projector_count': projector_count,
-        'printer_count': printer_count,
-        'switch_count': switch_count,
-        'screen_count': screen_count,
-    })
-def is_lab(request):
-    lab='is'
-    # Calculate counts for different item categories
-    chair_count = Chairs.objects.filter(lab_name=lab).count()
-    table_count = Tables.objects.filter(lab_name=lab).count()
-    projector_count = Projector.objects.filter(lab_name=lab).count()
-    printer_count = Printer.objects.filter(lab_name=lab).count()
-    switch_count = Network_Switch.objects.filter(lab_name=lab).count()
-    screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
+def lab_view(request, lab):
+    template_name = f'{lab}.html'
 
-    return render(request, 'is_lab.html', {
-        'lab': lab,
-        'chair_count': chair_count,
-        'table_count': table_count,
-        'projector_count': projector_count,
-        'printer_count': printer_count,
-        'switch_count': switch_count,
-        'screen_count': screen_count,
-    })
-def cc_lab(request):
-    lab='cc'
-    # Calculate counts for different item categories
-    chair_count = Chairs.objects.filter(lab_name=lab).count()
-    table_count = Tables.objects.filter(lab_name=lab).count()
-    projector_count = Projector.objects.filter(lab_name=lab).count()
-    printer_count = Printer.objects.filter(lab_name=lab).count()
-    switch_count = Network_Switch.objects.filter(lab_name=lab).count()
-    screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    # Define category options
+    arm_categories = ['with_arm', 'without_arm']
+    material_categories = ['plastic', 'wooden','steel','fiber']
+    rolling_categories = ['rolling', 'non_rolling']
 
-    return render(request, 'cc_lab.html', {
+    # Initialize a dictionary to store counts for each combination
+    chair_counts = {}
+
+    # Generate all possible combinations
+    combinations = product(arm_categories, material_categories, rolling_categories)
+
+    # Loop through each combination and count chairs
+    for combination in combinations:
+        arm_category, material_category, rolling_category = combination
+
+        # Count chairs for this combination
+        count = Chairs.objects.filter(
+            lab_name=lab,
+            category1=arm_category,
+            category2=material_category,
+            category3=rolling_category
+        ).count()
+
+        # Store the count in the dictionary with the combination as the key
+        chair_counts[combination] = count
+
+    # You can now access counts for various combinations like chair_counts[('with_arm', 'plastic', 'rolling')]
+
+    return render(request, template_name, {
         'lab': lab,
-        'chair_count': chair_count,
-        'table_count': table_count,
-        'projector_count': projector_count,
-        'printer_count': printer_count,
-        'switch_count': switch_count,
-        'screen_count': screen_count,
+        'chair_counts': chair_counts,
     })

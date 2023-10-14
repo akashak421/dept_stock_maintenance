@@ -22,11 +22,11 @@ class Chairs(models.Model):
 
     # Define choices for lab_name
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -62,11 +62,11 @@ class Chairs(models.Model):
 class Tables(models.Model):
     # name = models.CharField(max_length=100)
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -94,11 +94,11 @@ class Tables(models.Model):
 
 class Board(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -131,11 +131,11 @@ class Board(models.Model):
 
 class Cupboard(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -173,11 +173,11 @@ class Cupboard(models.Model):
 
 class Keyboard(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -203,11 +203,11 @@ class Keyboard(models.Model):
 
 class Mouse(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -233,11 +233,11 @@ class Mouse(models.Model):
 
 class Camera(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -266,11 +266,11 @@ class Camera(models.Model):
 
 class TubeLight(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -296,11 +296,11 @@ class TubeLight(models.Model):
 
 class Fan(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -326,11 +326,11 @@ class Fan(models.Model):
 
 class Cctv(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -366,11 +366,11 @@ class Cctv(models.Model):
 
 class Biometric(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -400,11 +400,11 @@ class Biometric(models.Model):
 
 class Monitor(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
     # category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
@@ -423,11 +423,11 @@ class Monitor(models.Model):
 
 class Cpu(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
     # category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
@@ -445,11 +445,11 @@ class Cpu(models.Model):
 
 class Network_Switch(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -475,16 +475,16 @@ class Network_Switch(models.Model):
     def __str__(self):
         return self.lab_name
 
-#------------------------miscellaneous---------------------------
+#------------------------mislabcellaneous---------------------------
 
 
 class Projector(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
     brand = models.CharField(max_length=255, blank=True)
@@ -511,11 +511,11 @@ class Projector(models.Model):
 
 class Printer(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
     brand = models.CharField(max_length=255, blank=True)
@@ -536,11 +536,11 @@ class Printer(models.Model):
 
 class Socket(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -578,11 +578,11 @@ class Socket(models.Model):
 
 class Projector_Screen(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -607,11 +607,11 @@ class Projector_Screen(models.Model):
 
 class Extension_Box(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -650,11 +650,11 @@ class Extension_Box(models.Model):
 
 class Connecting_Wire(models.Model):
     LAB_CHOICES = (
-        ('cc', 'CC Lab'),
-        ('ibm', 'IBM Lab'),
-        ('is', 'IS Lab'),
-        ('project', 'Project Lab'),
-        ('research', 'Research Lab'),
+        ('cclab', 'CC Lab'),
+        ('ibmlab', 'IBM Lab'),
+        ('islab', 'IS Lab'),
+        ('projectlab', 'Project Lab'),
+        ('researchlab', 'Research Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
