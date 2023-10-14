@@ -1,8 +1,15 @@
 {% extends "base.html" %}
-{% load static %}
-
-{% block title %}  Lab Details {% endblock title %}
+{% block title %} Lab Items {% endblock title %}
 
 {% block content %}
-<h3>CC Lab</h3>
+    <center><h1>CC LAB</h1><br><br><br>
+    <!-- <p>Lab: CC LAB</p> -->
+    <p>Number of Chairs: {{ chair_count }}</p>
+    <p>Number of Tables: {{ table_count }}</p>
+    <p>Number of Projectors: {{ projector_count }}</p>
+    <p>Number of Printers: {{ printer_count }}</p>
+    <p>Number of Network Switches: {{ switch_count }}</p>
+    <p>Number of Projector Screens: {{ screen_count }}</p>
+</center>
+    <!-- Add similar lines for other item categories -->
 {% endblock content %}
