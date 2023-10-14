@@ -46,9 +46,9 @@ class Chairs(models.Model):
         ('non_rolling', 'Non-Rolling'),
     )
 
-    armtype = models.CharField(max_length=20, choices=ARM_CHOICES)
-    material = models.CharField(max_length=20, choices=MATERIAL_CHOICES)
-    rolltype = models.CharField(max_length=20, choices=ROLLING_CHOICES)
+    arm_type = models.CharField(max_length=20, choices=ARM_CHOICES)
+    material_type = models.CharField(max_length=20, choices=MATERIAL_CHOICES)
+    roll_type = models.CharField(max_length=20, choices=ROLLING_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -80,8 +80,8 @@ class Tables(models.Model):
         ('wooden', 'Wooden'),
     )
     
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    table_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    material_type = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -116,9 +116,9 @@ class Board(models.Model):
         ('normal_type', 'Normal Type'),
     )
 
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
+    board_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    material_type = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    installation_type = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -155,9 +155,9 @@ class Cupboard(models.Model):
         ('Large','Large'),
     )
 
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
+    cupboard_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    size = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    door_type = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -187,8 +187,16 @@ class Keyboard(models.Model):
         ('ps/2 keyboard', 'ps/2 keyboard'),
         ('usb_keyboard','usb keyboard'),
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=False)
+    BRAND_CHOICES = (
+        ('ASUS','ASUS'),
+        ('Logitech','Logitech'),
+        ('HP (Hewlett-Packard)','HP (Hewlett-Packard)'),
+        ('Dell','Dell'),
+        ('Microsoft','Microsoft'),
+        ('Other','Other')
+    )
+    keyboard_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    brand = models.CharField(max_length=20, choices=BRAND_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -217,8 +225,16 @@ class Mouse(models.Model):
         ('ps/2 Mouse', 'ps/2 Mouse'),
         ('usb_Mouse','usb Mouse'),
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
+    BRAND_CHOICES = (
+        ('ASUS','ASUS'),
+        ('Logitech','Logitech'),
+        ('HP (Hewlett-Packard)','HP (Hewlett-Packard)'),
+        ('Dell','Dell'),
+        ('Microsoft','Microsoft'),
+        ('Other','Other')
+    )
+    mouse_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    brand = models.CharField(max_length=20, choices=BRAND_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -245,10 +261,17 @@ class Camera(models.Model):
     CATEGORY1_CHOICES = (
         ('Webcam', 'Webcam'),
         ('Video_Conference_Cam', 'Video_Conference_Cam'),
-
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)
+    BRAND_CHOICES = (
+        ('Cisco','Cisco'),
+        ('Logitech','Logitech'),
+        ('HP (Hewlett-Packard)','HP (Hewlett-Packard)'),
+        ('Sony','Sony'),
+        ('Microsoft','Microsoft'),
+        ('Other','Other')
+    )
+    web_cam_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    brand = models.CharField(max_length=20, choices=BRAND_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -281,7 +304,7 @@ class TubeLight(models.Model):
         ('only choke','only choke'),
 
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    light_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
     
 
     STATUS_CHOICES = (
@@ -311,7 +334,7 @@ class Fan(models.Model):
         ('Stand type','Stand type'),
 
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    fan_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
     
 
     STATUS_CHOICES = (
@@ -346,11 +369,9 @@ class Cctv(models.Model):
     CATEGORY2_CHOICES = (
         ('IR camera', 'IR camera'),
         ('Normal', 'Normal'),
-
-
     )
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
+    camera_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    camera_mode = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
     
 
     STATUS_CHOICES = (
@@ -378,13 +399,26 @@ class Biometric(models.Model):
     CATEGORY1_CHOICES = (
         ('FingerPrint', 'FingerPrint'),
         ('EyeBall', 'EyeBall'),
-       
-
     )
-    
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)    
-    model = models.CharField(max_length=255, blank=True)    
+    BRAND_CHOICES = (
+        ('ZKTeco', 'ZKTeco'),
+        ('Suprema', 'Suprema'),
+        ('HID Global','HID Global'),
+        ('Morpho (Safran)', 'Morpho (Safran)'),
+        ('Crossmatch', 'Crossmatch'),
+        ('Other', 'Other'),
+    )
+    MODEL_CHOICES = (
+        ('ZKTeco SF300', 'ZKTeco SF300'),
+        ('Suprema BioLite N2', 'Suprema BioLite N2'),
+        ('HID Global Lumidigm V371', 'HID Global Lumidigm V371'),
+        ('Morpho (Safran) MSO 1300 E2', 'Morpho (Safran) MSO 1300 E2'),
+        ('Crossmatch Verifier 320 LC', 'Crossmatch Verifier 320 LC'),
+        ('Other','Other'),
+    )
+    biometric_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
+    brand = models.CharField(max_length=20, choices=BRAND_CHOICES)
+    model = models.CharField(max_length=255, choices=MODEL_CHOICES)
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -408,8 +442,8 @@ class Monitor(models.Model):
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
     # category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    brand = models.CharField(max_length=255, blank=True)    
-    model = models.CharField(max_length=255, blank=True)    
+    brand = models.CharField(max_length=255, blank=True)
+    model = models.CharField(max_length=255, blank=True)
 
     STATUS_CHOICES = (
         ('available', 'Available'),

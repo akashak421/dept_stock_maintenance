@@ -5,39 +5,39 @@ from .models import Cctv, Chairs, Cpu, Extension_Box, Monitor, Network_Switch, P
 class ChairForm(forms.ModelForm):
     class Meta:
         model = Chairs
-        fields = ['lab_name', 'armtype', 'material', 'rolltype']
+        fields = ['lab_name', 'arm_type', 'material_type', 'roll_type']
 
 
 class TableForm(forms.ModelForm):
     class Meta:
         model = Tables
-        fields = ['lab_name', 'category1', 'category2']
+        fields = ['lab_name', 'table_type', 'material_type']
 
 class BoardForm(forms.ModelForm):
     class Meta:
         model = Board
-        fields = ['lab_name', 'category1', 'category2', 'category3']
+        fields = ['lab_name', 'board_type', 'material_type', 'installation_type']
 
 class CupBoardForm(forms.ModelForm):
     class Meta:
         model = Cupboard
-        fields = ['lab_name', 'category1', 'category2', 'category3']
+        fields = ['lab_name', 'cupboard_type', 'size', 'door_type']
 
 class KeyboardForm(forms.ModelForm):
     class Meta:
         model = Keyboard
-        fields = ['lab_name', 'category1', 'brand']
+        fields = ['lab_name', 'keyboard_type', 'brand']
 
 
 class MouseForm(forms.ModelForm):
     class Meta:
         model = Mouse
-        fields = ['lab_name', 'category1', 'brand']
+        fields = ['lab_name', 'mouse_type', 'brand']
 
 class CameraForm(forms.ModelForm):
     class Meta:
         model = Camera
-        fields = ['lab_name', 'category1', 'brand']
+        fields = ['lab_name', 'web_cam_type', 'brand']
 
 
 #------------------form for electrical items------------
@@ -45,22 +45,22 @@ class CameraForm(forms.ModelForm):
 class TubeLightForm(forms.ModelForm):
     class Meta:
         model = TubeLight
-        fields = ['lab_name','category1']
+        fields = ['lab_name','light_type']
 
 class FanForm(forms.ModelForm):
     class Meta:
         model = Fan
-        fields = ['lab_name','category1']
+        fields = ['lab_name','fan_type']
 
 class CctvForm(forms.ModelForm):
     class Meta:
         model = Cctv
-        fields = ['lab_name','category1','category2']
+        fields = ['lab_name','camera_type','camera_mode']
 
 class BiometricForm(forms.ModelForm):
     class Meta:
         model = Biometric
-        fields = ['lab_name','category1','brand','model']
+        fields = ['lab_name','biometric_type','brand','model']
 
 
 #------------------------form of capital equipments--------------------
