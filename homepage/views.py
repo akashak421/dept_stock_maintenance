@@ -162,9 +162,9 @@ def lab_view(request, lab):
         # Count chairs for this combination
         count = Chairs.objects.filter(
             lab_name=lab,
-            category1=arm_category,
-            category2=material_category,
-            category3=rolling_category
+            armtype=arm_category,
+            material=material_category,
+            rolltype=rolling_category
         ).count()
 
         # Store the count in the dictionary with the combination as the key

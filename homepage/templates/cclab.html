@@ -25,8 +25,6 @@
         <p>Number of Extension Boxes: {{ extension_box_count }}</p>
         <p>Number of Connecting Wires: {{ connecting_wire_count }}</p>
     </center>
-</center>
-<!-- lab_template.html -->
     <h1>{{ lab }} Lab</h1>
 
     <h2>Chair Counts:</h2>
@@ -34,9 +32,9 @@
         {% for combination, count in chair_counts.items %}
         <li>
             Combination: {{lab}},
-            Arms: {{ combination.0 }}, 
-            Material: {{ combination.1 }}, 
-            Rolling: {{ combination.2 }} 
+            Arms: {{ combination.0 }},
+            Material: {{ combination.1 }},
+            Rolling: {{ combination.2 }}
             Count: {{ count }}
         </li>
         {% endfor %}

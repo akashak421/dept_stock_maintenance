@@ -31,25 +31,25 @@ class Chairs(models.Model):
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
     # Define choices for categories
-    CATEGORY1_CHOICES = (
+    ARM_CHOICES = (
         ('with_arm', 'With Arm'),
         ('without_arm', 'Without Arm'),
     )
-    CATEGORY2_CHOICES = (
+    MATERIAL_CHOICES = (
         ('steel', 'Steel'),
         ('plastic', 'Plastic'),
         ('wooden', 'Wooden'),
         ('fiber', 'Fiber'),
     )
-    CATEGORY3_CHOICES = (
+    ROLLING_CHOICES = (
         ('rolling', 'Rolling'),
         ('non_rolling', 'Non-Rolling'),
     )
-    
-    category1 = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    category2 = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    category3 = models.CharField(max_length=20, choices=CATEGORY3_CHOICES)
-    
+
+    armtype = models.CharField(max_length=20, choices=ARM_CHOICES)
+    material = models.CharField(max_length=20, choices=MATERIAL_CHOICES)
+    rolltype = models.CharField(max_length=20, choices=ROLLING_CHOICES)
+
     STATUS_CHOICES = (
         ('available', 'Available'),
         ('not_available', 'Not Available'),
@@ -58,7 +58,7 @@ class Chairs(models.Model):
 
     def __str__(self):
         return self.lab_name
-    
+
 class Tables(models.Model):
     # name = models.CharField(max_length=100)
     LAB_CHOICES = (
