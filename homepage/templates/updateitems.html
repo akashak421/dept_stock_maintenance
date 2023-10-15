@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<style>
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+        gap: 20px; /* Adjust the gap between grid items */
+    }
+
+    .category-item {
+        text-align: center; /* Center-align the content within each grid item */
+        border: 1px solid #ccc; /* Add borders for each grid item (optional) */
+        padding: 10px;
+    }
+
+    .category-image {
+        max-width: 100%; /* Ensure the image doesn't exceed the grid item's width */
+        height: auto; /* Maintain the image's aspect ratio */
+    }
+</style>
+<center>
+<div class="category-grid">
+    {% for category in categories %}
+        <div class="category-item">
+            <h3>{{ category.name }}</h3>
+            <img class="category-image" src="{{ category.image.url }}" alt="{{ category.name }}"><br><br>
+            <a href="{% url 'update_item_list' category.id %}">
+                <button class="ghost-pink">UPDATE ITEMS</button>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+</center>
+{% endblock content %}

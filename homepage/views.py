@@ -4,7 +4,7 @@ from django.contrib import messages
 from itertools import product
 
 from .forms import BiometricForm, CameraForm, CctvForm, ChairForm, Connecting_WireForm, CpuForm, Extension_BoxForm, FanForm, MonitorForm, MouseForm, Network_SwitchForm, PrinterForm, Projector_ScreenForm, ProjectorForm, SocketForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
-
+from .forms import Update_BiometricForm, Update_CameraForm, Update_CctvForm, Update_ChairForm, Update_Connecting_WireForm, Update_CpuForm, Update_Extension_BoxForm, Update_FanForm, Update_MonitorForm, Update_MouseForm, Update_Network_SwitchForm, Update_PrinterForm, Update_Projector_ScreenForm, Update_ProjectorForm, Update_SocketForm,Update_TableForm,Update_BoardForm,Update_CupBoardForm,Update_KeyboardForm, Update_TubeLightForm
 
 from homepage.models import Category, Item, Chairs, Tables, Projector, Printer, Network_Switch, Projector_Screen
 
@@ -92,6 +92,75 @@ def add_item_form(request, item_id):
 
     return render(request, 'additemform.html',{'item': item,'form': form})
 
+def update_items(request):
+    categories = Category.objects.all()  # Get all categories
+    return render(request, 'updateitems.html', {'categories': categories})
+
+def update_item_list(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    items = Item.objects.filter(category=category)
+    return render(request, 'updateitemlist.html', {'category': category, 'items': items})
+
+
+def update_item_form(request, item_id):
+    item = get_object_or_404(Item, pk=item_id)
+    form = None
+
+    # Define which form to use based on item_id
+    if item_id == 1:
+        form_class = Update_TableForm
+    elif item_id == 2:
+        form_class = Update_ChairForm
+    elif item_id == 3:
+        form_class = Update_TubeLightForm
+    elif item_id == 4:
+        form_class = Update_FanForm
+    elif item_id == 5:
+        form_class = Update_CctvForm
+    elif item_id == 6:
+        form_class = Update_BiometricForm
+    elif item_id == 7:
+        form_class = Update_KeyboardForm
+    elif item_id == 8:
+        form_class = Update_MouseForm
+    elif item_id == 9:
+        form_class = Update_CameraForm
+    elif item_id == 10:
+        form_class = Update_BoardForm
+    elif item_id == 11:
+        form_class = Update_CupBoardForm
+    elif item_id == 12:
+        form_class = Update_MonitorForm
+    elif item_id == 13:
+        form_class = Update_CpuForm
+    elif item_id == 14:
+        form_class = Update_Network_SwitchForm
+    elif item_id == 15:
+        form_class = Update_ProjectorForm
+    elif item_id == 16:
+        form_class = Update_PrinterForm
+    elif item_id == 17:
+        form_class = Update_SocketForm
+    elif item_id == 18:
+        form_class = Update_Projector_ScreenForm
+    elif item_id == 19:
+        form_class = Update_Extension_BoxForm
+    elif item_id == 20:
+        form_class = Update_Connecting_WireForm
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'You have successfully updated the item.')
+            form = form_class()
+            # Clear the form by redirecting to the same page
+            return redirect('update_item_form',item_id=item_id)
+    else:
+        form = form_class()
+    if not request.method == 'POST' or form.errors:
+        form.novalidate = True
+
+    return render(request, 'updateitemform.html',{'item': item,'form': form})
 
 def lab_view(request, lab):
     template_name = f'{lab}.html'
