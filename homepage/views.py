@@ -172,17 +172,17 @@ def lab_view(request, lab):
     chair_counts = {}
 
     # Generate all possible combinations
-    combinations = product(arm_categories, material_categories, rolling_categories)
+    combinations = product(material_categories, arm_categories, rolling_categories)
 
     # Loop through each combination and count chairs
     for combination in combinations:
-        arm_category, material_category, rolling_category = combination
+        material_category,arm_category, rolling_category = combination
 
         # Count chairs for this combination
         count = Chairs.objects.filter(
             lab_name=lab,
-            arm_type=arm_category,
             material_type=material_category,
+            arm_type=arm_category,
             roll_type=rolling_category
         ).count()
 
