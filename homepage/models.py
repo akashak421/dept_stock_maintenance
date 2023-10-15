@@ -20,7 +20,7 @@ class Item(models.Model):
 
 class Chairs(models.Model):
 
-    # Define choices for lab_name
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -55,12 +55,28 @@ class Chairs(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Chairs.objects.filter(id__startswith=f'{lab_prefix}-FU-CHA-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-FU-CHA-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Chairs, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 class Tables(models.Model):
-    # name = models.CharField(max_length=100)
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -88,11 +104,29 @@ class Tables(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
+
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Tables.objects.filter(id__startswith=f'{lab_prefix}-FU-TAB-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-FU-TAB-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Tables, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.lab_name
 
 class Board(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -125,11 +159,28 @@ class Board(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Board.objects.filter(id__startswith=f'{lab_prefix}-FU-BOA-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-FU-BOA-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Board, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 class Cupboard(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -164,7 +215,23 @@ class Cupboard(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Cupboard.objects.filter(id__startswith=f'{lab_prefix}-MFU-CUB-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-FU-CUB-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Cupboard, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
@@ -172,6 +239,7 @@ class Cupboard(models.Model):
 #-------------------------------- starting of consumables... ------------------------------------------
 
 class Keyboard(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -203,13 +271,30 @@ class Keyboard(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Keyboard.objects.filter(id__startswith=f'{lab_prefix}-CO-KEY-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-CO-KEY-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Keyboard, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 
 
 class Mouse(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -241,13 +326,30 @@ class Mouse(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Mouse.objects.filter(id__startswith=f'{lab_prefix}-CO-MOU-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-CO-MOU-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Mouse, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 
 
 class Camera(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -278,7 +380,23 @@ class Camera(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Camera.objects.filter(id__startswith=f'{lab_prefix}-CO-CAM-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-CO-CAM-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Camera, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
@@ -288,6 +406,7 @@ class Camera(models.Model):
 
 
 class TubeLight(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -312,12 +431,29 @@ class TubeLight(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = TubeLight.objects.filter(id__startswith=f'{lab_prefix}-EQ-LIG-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-EQ-LIG-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(TubeLight, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 
 class Fan(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -342,12 +478,29 @@ class Fan(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Fan.objects.filter(id__startswith=f'{lab_prefix}-EQ-FAN-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-EQ-FAN-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Fan, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 
 class Cctv(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -372,20 +525,36 @@ class Cctv(models.Model):
     )
     camera_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
     camera_mode = models.CharField(max_length=20, choices=CATEGORY2_CHOICES)
-    
 
     STATUS_CHOICES = (
         ('available', 'Available'),
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Cctv.objects.filter(id__startswith=f'{lab_prefix}-EQ-CCT-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-EQ-CCT-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Cctv, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 
 
 class Biometric(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -425,7 +594,23 @@ class Biometric(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Biometric.objects.filter(id__startswith=f'{lab_prefix}-EQ-BIO-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-EQ-BIO-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Biometric, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
@@ -433,6 +618,7 @@ class Biometric(models.Model):
 #--------------------Capital Equipments ----------------------------
 
 class Monitor(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -463,12 +649,29 @@ class Monitor(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Monitor.objects.filter(id__startswith=f'{lab_prefix}-CE-MON-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-CE-MON-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Monitor, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 
 class Cpu(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -491,11 +694,28 @@ class Cpu(models.Model):
         ('not_available', 'Not Available'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Cpu.objects.filter(id__startswith=f'{lab_prefix}-CE-CPU-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-CE-CPU-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Cpu, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
 class Network_Switch(models.Model):
+    id=models.CharField(max_length=14,primary_key=True)
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -539,11 +759,27 @@ class Network_Switch(models.Model):
         ('Scrap','Scrap'),
     )
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            lab_prefix = self.lab_name[:2].upper()
 
+            # Get the maximum existing ID with the same prefix and suffix
+            max_id = Network_Switch.objects.filter(id__startswith=f'{lab_prefix}-CE-NTS-').aggregate(models.Max('id'))
+            if max_id['id__max']:
+                # Extract the count from the maximum ID and increment it by 1
+                count = int(max_id['id__max'].split('-')[-1]) + 1
+            else:
+                # If no existing records, start the count from 1
+                count = 1
+
+            # Create the new ID
+            self.id = f'{lab_prefix}-CE-NTS-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
+
+        super(Network_Switch, self).save(*args, **kwargs)
     def __str__(self):
         return self.lab_name
 
-#------------------------mislabcellaneous---------------------------
+#------------------------miscellaneous---------------------------
 
 
 class Projector(models.Model):
@@ -646,7 +882,7 @@ class Printer(models.Model):
             lab_prefix = self.lab_name[:2].upper()
 
             # Get the maximum existing ID with the same prefix and suffix
-            max_id = Printer.objects.filter(id__startswith=f'{lab_prefix}-MI-PRO-').aggregate(models.Max('id'))
+            max_id = Printer.objects.filter(id__startswith=f'{lab_prefix}-MI-PRI-').aggregate(models.Max('id'))
             if max_id['id__max']:
                 # Extract the count from the maximum ID and increment it by 1
                 count = int(max_id['id__max'].split('-')[-1]) + 1
@@ -708,7 +944,7 @@ class Socket(models.Model):
             lab_prefix = self.lab_name[:2].upper()
 
             # Get the maximum existing ID with the same prefix and suffix
-            max_id = Socket.objects.filter(id__startswith=f'{lab_prefix}-MI-PRO-').aggregate(models.Max('id'))
+            max_id = Socket.objects.filter(id__startswith=f'{lab_prefix}-MI-SOC-').aggregate(models.Max('id'))
             if max_id['id__max']:
                 # Extract the count from the maximum ID and increment it by 1
                 count = int(max_id['id__max'].split('-')[-1]) + 1
@@ -756,7 +992,7 @@ class Projector_Screen(models.Model):
             lab_prefix = self.lab_name[:2].upper()
 
             # Get the maximum existing ID with the same prefix and suffix
-            max_id = Projector_Screen.objects.filter(id__startswith=f'{lab_prefix}-MI-PRO-').aggregate(models.Max('id'))
+            max_id = Projector_Screen.objects.filter(id__startswith=f'{lab_prefix}-MI-SCR-').aggregate(models.Max('id'))
             if max_id['id__max']:
                 # Extract the count from the maximum ID and increment it by 1
                 count = int(max_id['id__max'].split('-')[-1]) + 1
@@ -821,7 +1057,7 @@ class Extension_Box(models.Model):
             lab_prefix = self.lab_name[:2].upper()
 
             # Get the maximum existing ID with the same prefix and suffix
-            max_id = Extension_Box.objects.filter(id__startswith=f'{lab_prefix}-MI-PRO-').aggregate(models.Max('id'))
+            max_id = Extension_Box.objects.filter(id__startswith=f'{lab_prefix}-MI-EXT-').aggregate(models.Max('id'))
             if max_id['id__max']:
                 # Extract the count from the maximum ID and increment it by 1
                 count = int(max_id['id__max'].split('-')[-1]) + 1
@@ -872,7 +1108,7 @@ class Connecting_Wire(models.Model):
             lab_prefix = self.lab_name[:2].upper()
 
             # Get the maximum existing ID with the same prefix and suffix
-            max_id = Connecting_Wire.objects.filter(id__startswith=f'{lab_prefix}-MI-PRO-').aggregate(models.Max('id'))
+            max_id = Connecting_Wire.objects.filter(id__startswith=f'{lab_prefix}-MI-WIR-').aggregate(models.Max('id'))
             if max_id['id__max']:
                 # Extract the count from the maximum ID and increment it by 1
                 count = int(max_id['id__max'].split('-')[-1]) + 1

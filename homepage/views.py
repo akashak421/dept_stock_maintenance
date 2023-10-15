@@ -93,54 +93,6 @@ def add_item_form(request, item_id):
     return render(request, 'additemform.html',{'item': item,'form': form})
 
 
-# def lab_view(request, lab):
-    # template_name = f'{lab}.html'
-    # chair_count = Chairs.objects.filter(lab_name=lab).count()
-    # table_count = Tables.objects.filter(lab_name=lab).count()
-    # projector_count = Projector.objects.filter(lab_name=lab).count()
-    # printer_count = Printer.objects.filter(lab_name=lab).count()
-    # switch_count = Network_Switch.objects.filter(lab_name=lab).count()
-    # screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # biometric_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # tubelight_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # fan_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # cctv_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # keyboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # mouse_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # camera_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # board_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # cupboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # monitor_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # cpu_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # socket_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # extension_box_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    # connecting_wire_count = Projector_Screen.objects.filter(lab_name=lab).count()
-
-    # return render(request, template_name, {
-    #     'lab': lab,
-    #     'chair_count': chair_count,
-    #     'table_count': table_count,
-    #     'projector_count': projector_count,
-    #     'printer_count': printer_count,
-    #     'switch_count': switch_count,
-    #     'screen_count': screen_count,
-    #     'biometric_count' : biometric_count,
-    #     'tubelight_count' : tubelight_count,
-    #     'fan_count' : fan_count,
-    #     'cctv_count' : cctv_count,
-    #     'keyboard_count' : keyboard_count,
-    #     'mouse_count' : mouse_count,
-    #     'camera_count' : camera_count,
-    #     'board_count' : board_count,
-    #     'cupboard_count' : cupboard_count,
-    #     'monitor_count' : monitor_count,
-    #     'cpu_count' :cpu_count,
-    #     'socket_count' : socket_count,
-    #     'extension_box_count' : extension_box_count,
-    #     'connecting_wire_count' : connecting_wire_count,
-    # })
-
-
 def lab_view(request, lab):
     template_name = f'{lab}.html'
     chair_count = Chairs.objects.filter(lab_name=lab).count()
@@ -163,6 +115,7 @@ def lab_view(request, lab):
     socket_count = Projector_Screen.objects.filter(lab_name=lab).count()
     extension_box_count = Projector_Screen.objects.filter(lab_name=lab).count()
     connecting_wire_count = Projector_Screen.objects.filter(lab_name=lab).count()
+
     # Define category options
     arm_categories = ['with_arm', 'without_arm']
     material_categories = ['plastic', 'wooden','steel','fiber']
