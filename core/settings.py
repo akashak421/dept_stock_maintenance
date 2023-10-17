@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'crispy_forms',                             # uses 'django-crispy-forms' app
     'login_required',                           # uses 'django-login-required-middleware' app
     # 'pillow'
+    'xhtml2pdf',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Items Report</title>
+    <style>
+        /* Your CSS styles for the PDF content */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1{
+            font-size: 18px;
+        }
+        /* Add styles for the header */
+        .header {
+            text-align :center;
+            margin-bottom :20px;
+            font-size :24px;
+            font-weight: bold;
+        }
+
+        table {
+            width :100%;
+            border-collapse: collapse;
+            margin-bottom :20px;
+        }
+
+        table, th, td {
+            border :1px solid black;
+        }
+
+        th, td {
+            padding: 5px;
+            width :50%;
+            font-size :13px;
+            text-align :center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        PSG College of Technology<br>
+        Department of Computer Applications<br>
+        Lab Stock Maintenance
+    </div>
+
+    <!-- Content Table -->
+    <center>
+        <h1>{{Name_of_the_lab}}</h1><br>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <td>Number of Chairs</td>
+                <td>{{ chair_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Tables</td>
+                <td>{{ table_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Projectors</td>
+                <td>{{ projector_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Printers</td>
+                <td>{{ printer_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Network Switches</td>
+                <td>{{ switch_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Projector Screens</td>
+                <td>{{ screen_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Biometric Devices</td>
+                <td>{{ biometric_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Tube Lights</td>
+                <td>{{ tubelight_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Fans</td>
+                <td>{{ fan_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of CCTV Cameras</td>
+                <td>{{ cctv_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Keyboards</td>
+                <td>{{ keyboard_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Mice</td>
+                <td>{{ mouse_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Cameras</td>
+                <td>{{ camera_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Boards</td>
+                <td>{{ board_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Cupboards</td>
+                <td>{{ cupboard_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Monitors</td>
+                <td>{{ monitor_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of CPUs</td>
+                <td>{{ cpu_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Sockets</td>
+                <td>{{ socket_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Extension Boxes</td>
+                <td>{{ extension_box_count }}</td>
+            </tr>
+            <tr>
+                <td>Number of Connecting Wires</td>
+                <td>{{ connecting_wire_count }}</td>
+            </tr>
+        </table>
+    </center>
+
+    <!-- Similar tables for other item categories -->
+
+</body>
+
+</html>

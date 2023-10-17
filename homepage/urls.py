@@ -16,7 +16,8 @@ urlpatterns = [
     path('update/<int:category_id>/', views.update_item_list, name='update_item_list'),
     path('add_item_form/<int:item_id>/', views.add_item_form, name='add_item_form'),
     path('update_item_form/<int:item_id>/', views.update_item_form, name='update_item_form'),
-     path('lab/<str:lab>/', views.lab_view, name='lab_view'),
+    path('lab/<str:lab>/', views.lab_view, name='lab_view'),
+    path('<str:lab>/', views.generate_pdf, name='generate_pdf'),
 ]
 
 if settings.DEBUG:

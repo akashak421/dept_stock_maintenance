@@ -418,7 +418,7 @@ class TubeLight(models.Model):
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
-    
+
     CATEGORY1_CHOICES = (
         ('LED Bulb', 'LED Bulb'),
         ('electrical choke', 'Electrical choke'),
@@ -426,7 +426,7 @@ class TubeLight(models.Model):
 
     )
     light_type = models.CharField(max_length=20, choices=CATEGORY1_CHOICES)
-    
+
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -465,7 +465,7 @@ class Fan(models.Model):
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
-    
+
     CATEGORY1_CHOICES = (
         ('ceiling', 'ceiling'),
         ('wall mount', 'wall mount'),

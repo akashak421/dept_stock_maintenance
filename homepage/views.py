@@ -2,6 +2,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
 from django.contrib import messages
 from itertools import product
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 from .forms import BiometricForm, CameraForm, CctvForm, ChairForm, Connecting_WireForm, CpuForm, Extension_BoxForm, FanForm, MonitorForm, MouseForm, Network_SwitchForm, PrinterForm, Projector_ScreenForm, ProjectorForm, SocketForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
 from .forms import Update_BiometricForm, Update_CameraForm, Update_CctvForm, Update_ChairForm, Update_Connecting_WireForm, Update_CpuForm, Update_Extension_BoxForm, Update_FanForm, Update_MonitorForm, Update_MouseForm, Update_Network_SwitchForm, Update_PrinterForm, Update_Projector_ScreenForm, Update_ProjectorForm, Update_SocketForm,Update_TableForm,Update_BoardForm,Update_CupBoardForm,Update_KeyboardForm, Update_TubeLightForm
@@ -238,3 +241,63 @@ def lab_view(request, lab):
         'connecting_wire_count' : connecting_wire_count,
     })
 
+def generate_pdf(request,lab):
+    chair_count = Chairs.objects.filter(lab_name=lab).count()
+    table_count = Tables.objects.filter(lab_name=lab).count()
+    projector_count = Projector.objects.filter(lab_name=lab).count()
+    printer_count = Printer.objects.filter(lab_name=lab).count()
+    switch_count = Network_Switch.objects.filter(lab_name=lab).count()
+    screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    biometric_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    tubelight_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    fan_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    cctv_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    keyboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    mouse_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    camera_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    board_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    cupboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    monitor_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    cpu_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    socket_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    extension_box_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    connecting_wire_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    Name_of_the_lab=lab.upper()
+    pdf = render_to_pdf('pdf.html', {
+        'Name_of_the_lab': Name_of_the_lab,
+        'chair_count': chair_count,
+        'table_count': table_count,
+        'projector_count': projector_count,
+        'printer_count': printer_count,
+        'switch_count': switch_count,
+        'screen_count': screen_count,
+        'biometric_count' : biometric_count,
+        'tubelight_count' : tubelight_count,
+        'fan_count' : fan_count,
+        'cctv_count' : cctv_count,
+        'keyboard_count' : keyboard_count,
+        'mouse_count' : mouse_count,
+        'camera_count' : camera_count,
+        'board_count' : board_count,
+        'cupboard_count' : cupboard_count,
+        'monitor_count' : monitor_count,
+        'cpu_count' :cpu_count,
+        'socket_count' : socket_count,
+        'extension_box_count' : extension_box_count,
+        'connecting_wire_count' : connecting_wire_count,
+    })
+
+    return HttpResponse(pdf, content_type='application/pdf')
+
+def render_to_pdf(template_path, context_dict):
+    template = get_template(template_path)
+    html = template.render(context_dict)
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="lab_items_report.pdf"'
+
+    # Generate PDF
+    pisa_status = pisa.CreatePDF(html, dest=response)
+
+    if pisa_status.err:
+        return HttpResponse('We had some errors with code %s <pre>%s</pre>' % (pisa_status.err, html))
+    return response
