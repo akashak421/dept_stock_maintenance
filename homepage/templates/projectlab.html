@@ -3,44 +3,140 @@
 
 {% block content %}
     <center>
-        <h1>{{ lab }} Lab</h1><br>
-        <p>Number of Chairs: {{ chair_count }}</p>
-        <p>Number of Tables: {{ table_count }}</p>
-        <p>Number of Projectors: {{ projector_count }}</p>
-        <p>Number of Printers: {{ printer_count }}</p>
-        <p>Number of Network Switches: {{ switch_count }}</p>
-        <p>Number of Projector Screens: {{ screen_count }}</p>
-        <p>Number of Biometric Devices: {{ biometric_count }}</p>
-        <p>Number of Tube Lights: {{ tubelight_count }}</p>
-        <p>Number of Fans: {{ fan_count }}</p>
-        <p>Number of CCTV Cameras: {{ cctv_count }}</p>
-        <p>Number of Keyboards: {{ keyboard_count }}</p>
-        <p>Number of Mouse: {{ mouse_count }}</p>
-        <p>Number of Cameras: {{ camera_count }}</p>
-        <p>Number of Boards: {{ board_count }}</p>
-        <p>Number of Cupboards: {{ cupboard_count }}</p>
-        <p>Number of Monitors: {{ monitor_count }}</p>
-        <p>Number of CPUs: {{ cpu_count }}</p>
-        <p>Number of Sockets: {{ socket_count }}</p>
-        <p>Number of Extension Boxes: {{ extension_box_count }}</p>
-        <p>Number of Connecting Wires: {{ connecting_wire_count }}</p>
+        <h1>PROJECT LAB</h1><br>
+        <table>
+            <tr>
+                <th class="item">Item</th>
+                <th class="colon"></th> {# An empty th for spacing #}
+                <th class="count">Count</th>
+            </tr>
+            <tr>
+                <td class="item">Number of Chairs</td>
+                <td class="colon">:</td> {# Separate td for the colon #}
+                <td class="count">{{ chair_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Tables</td>
+                <td class="colon">:</td>
+                <td class="count">{{ table_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Projectors</td>
+                <td class="colon">:</td>
+                <td class="count">{{ projector_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Printers</td>
+                <td class="colon">:</td>
+                <td class="count">{{ printer_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Network Switches</td>
+                <td class="colon">:</td>
+                <td class="count">{{ switch_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Projector Screens</td>
+                <td class="colon">:</td>
+                <td class="count">{{ screen_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Biometric Devices</td>
+                <td class="colon">:</td>
+                <td class="count">{{ biometric_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Tube Lights</td>
+                <td class="colon">:</td>
+                <td class="count">{{ tubelight_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Fans</td>
+                <td class="colon">:</td>
+                <td class="count">{{ fan_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of CCTV Cameras</td>
+                <td class="colon">:</td>
+                <td class="count">{{ cctv_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Keyboards</td>
+                <td class="colon">:</td>
+                <td class="count">{{ keyboard_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Mice</td>
+                <td class="colon">:</td>
+                <td class="count">{{ mouse_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Cameras</td>
+                <td class="colon">:</td>
+                <td class="count">{{ camera_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Boards</td>
+                <td class="colon">:</td>
+                <td class="count">{{ board_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Cupboards</td>
+                <td class="colon">:</td>
+                <td class="count">{{ cupboard_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Monitors</td>
+                <td class="colon">:</td>
+                <td class="count">{{ monitor_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of CPUs</td>
+                <td class="colon">:</td>
+                <td class="count">{{ cpu_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Sockets</td>
+                <td class="colon">:</td>
+                <td class="count">{{ socket_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Extension Boxes</td>
+                <td class="colon">:</td>
+                <td class="count">{{ extension_box_count }}</td>
+            </tr>
+            <tr>
+                <td class="item">Number of Connecting Wires</td>
+                <td class="colon">:</td>
+                <td class="count">{{ connecting_wire_count }}</td>
+            </tr>
+        </table>
     </center>
 
     <h2>Chair Counts:</h2>
-    <ul>
+    <table>
+        <tr>
+            <th class="item">Combination</th>
+            <th class="colon"></th> {# An empty th for spacing #}
+            <th class="count">Count</th>
+        </tr>
         {% for combination, count in chair_counts.items %}
-        <li>
-            Combination: {{lab}},
-            Arms: {{ combination.0 }}, 
-            Material: {{ combination.1 }}, 
-            Rolling: {{ combination.2 }} 
-            Count: {{ count }}
-        </li>
+        <tr>
+            <td class="item">Material</td>
+            <td class="colon">:</td> {# Separate td for the colon #}
+            <td class="count">{{ combination.0 }}</td>
+            <td class="item">Arms</td>
+            <td class="colon">:</td>
+            <td class="count">{{ combination.1 }}</td>
+            <td class="item">Rolling</td>
+            <td class="colon">:</td>
+            <td class="count">{{ combination.2 }}</td>
+            <td class="item">Count</td>
+            <td class="colon">:</td>
+            <td class="count">{{ count }}</td>
+        </tr>
         {% endfor %}
-    </ul>
-
-    <!-- Add similar sections for other item categories -->
-
+    </table>
 </body>
 </html>
 

@@ -9,7 +9,7 @@
     }
     </style>
     <center>
-        <h1>IS Lab</h1><br>
+        <h1>IS LAB</h1><br>
         <table>
             <tr>
                 <th>Item</th>
@@ -101,40 +101,27 @@
     <h2>Chair Counts:</h2>
     <table>
         <tr>
-            <th>Combination</th>
-            <th>Count</th>
+            <th class="item">Combination</th>
+            <th class="colon"></th> {# An empty th for spacing #}
+            <th class="count">Count</th>
         </tr>
         {% for combination, count in chair_counts.items %}
         <tr>
-            <td>
-                Arms: {{ combination.0 }},
-                Material: {{ combination.1 }},
-                Rolling: {{ combination.2 }}
-            </td>
-            <td>{{ count }}</td>
+            <td class="item">Material</td>
+            <td class="colon">:</td> {# Separate td for the colon #}
+            <td class="count">{{ combination.0 }}</td>
+            <td class="item">Arms</td>
+            <td class="colon">:</td>
+            <td class="count">{{ combination.1 }}</td>
+            <td class="item">Rolling</td>
+            <td class="colon">:</td>
+            <td class="count">{{ combination.2 }}</td>
+            <td class="item">Count</td>
+            <td class="colon">:</td>
+            <td class="count">{{ count }}</td>
         </tr>
         {% endfor %}
-    </table>
-
-    <!-- <h2>Table Counts:</h2>
-    <table>
-        <tr>
-            <th>Type</th>
-            <th>Material</th>
-            <th>Status</th>
-            <th>Count</th>
-        </tr>
-        {% for item in table_counts %}
-        <tr>
-            <td>{{ item.0.type }}</td>
-            <td>{{ item.0.material }}</td>
-            <td>{{ item.0.status }}</td>
-            <td>{{ item.1 }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    Add similar tables for other item categories -->
+    </table>milar tables for other item categories -->
 
 </body>
 </html>
