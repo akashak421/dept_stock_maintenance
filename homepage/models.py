@@ -72,6 +72,8 @@ class Chairs(models.Model):
             self.id = f'{lab_prefix}-FU-CHA-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
 
         super(Chairs, self).save(*args, **kwargs)
+
+
     def __str__(self):
         return self.lab_name
 
@@ -711,6 +713,7 @@ class Cpu(models.Model):
             self.id = f'{lab_prefix}-CE-CPU-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
 
         super(Cpu, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.lab_name
 
@@ -776,6 +779,8 @@ class Network_Switch(models.Model):
             self.id = f'{lab_prefix}-CE-NTS-{count:04d}'  # Combine lab prefix, lab suffix, and count with leading zeros
 
         super(Network_Switch, self).save(*args, **kwargs)
+
+
     def __str__(self):
         return self.lab_name
 

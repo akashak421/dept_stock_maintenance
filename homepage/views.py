@@ -148,7 +148,7 @@ def update_item_form(request, item_id):
     elif item_id == 20:
         form_class = Update_Connecting_WireForm
     if request.method == 'POST':
-        form = form_class(request.POST)
+        form = form_class(request.POST, instance=item)
         if form.is_valid():
             form.save()
             messages.success(request, 'You have successfully updated the item.')
