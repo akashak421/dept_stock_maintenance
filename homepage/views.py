@@ -239,6 +239,7 @@ def lab_view(request, lab):
         'socket_count' : socket_count,
         'extension_box_count' : extension_box_count,
         'connecting_wire_count' : connecting_wire_count,
+        
     })
 
 def generate_pdf(request,lab):
@@ -262,6 +263,8 @@ def generate_pdf(request,lab):
     socket_count = Projector_Screen.objects.filter(lab_name=lab).count()
     extension_box_count = Projector_Screen.objects.filter(lab_name=lab).count()
     connecting_wire_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    total = chair_count + table_count +projector_count+printer_count+switch_count+screen_count+biometric_count+tubelight_count+fan_count+cctv_count+keyboard_count+mouse_count+camera_count+board_count+cupboard_count+monitor_count+cpu_count+socket_count+extension_box_count+connecting_wire_count
+
     Name_of_the_lab=lab.upper()
     pdf = render_to_pdf('pdf.html', {
         'Name_of_the_lab': Name_of_the_lab,
@@ -285,6 +288,7 @@ def generate_pdf(request,lab):
         'socket_count' : socket_count,
         'extension_box_count' : extension_box_count,
         'connecting_wire_count' : connecting_wire_count,
+        'total' : total
     })
 
     return HttpResponse(pdf, content_type='application/pdf')
