@@ -26,7 +26,7 @@ class Chairs(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -84,7 +84,7 @@ class Tables(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -134,7 +134,7 @@ class Board(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -188,7 +188,7 @@ class Cupboard(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -247,7 +247,7 @@ class Keyboard(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -302,7 +302,7 @@ class Mouse(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -357,7 +357,7 @@ class Camera(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -414,7 +414,7 @@ class TubeLight(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -461,7 +461,7 @@ class Fan(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -508,7 +508,7 @@ class Cctv(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -562,7 +562,7 @@ class Biometric(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -626,7 +626,7 @@ class Monitor(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     BRAND_CHOICES = (
         ('Dell', 'Dell'),
@@ -679,7 +679,7 @@ class Cpu(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     BRAND_CHOICES = (
         ('IBM', 'IBM'),
@@ -724,7 +724,7 @@ class Network_Switch(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -794,7 +794,7 @@ class Projector(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     BRAND_CHOICES = (
         ('Epson','Epson'),
@@ -852,7 +852,7 @@ class Printer(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     BRAND_CHOICES = (
         ('Dell', 'Dell'),
@@ -911,7 +911,7 @@ class Socket(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -972,7 +972,7 @@ class Projector_Screen(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -1022,7 +1022,7 @@ class Extension_Box(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 
@@ -1087,7 +1087,7 @@ class Connecting_Wire(models.Model):
         ('ibmlab', 'IBM Lab'),
         ('islab', 'IS Lab'),
         ('projectlab', 'Project Lab'),
-        ('researchlab', 'Research Lab'),
+        ('wirelesslab', 'Wireless Lab'),
     )
     lab_name = models.CharField(max_length=20, choices=LAB_CHOICES)
 

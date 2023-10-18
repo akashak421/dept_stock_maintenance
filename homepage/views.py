@@ -20,7 +20,7 @@ class HomeView(View):
         'images/ibmlab.jpeg',
         'images/cclab.jpeg',
         'images/projectlab.jpeg',
-        'images/researchlab.jpeg'
+        'images/wirelesslab.jpeg'
     ]
         return render(request, 'home.html', {'image_urls': image_urls})
 
