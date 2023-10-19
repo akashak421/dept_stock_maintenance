@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Update Item{% endblock title %}
+
+{% block content %}
+<h2>Update the {{ item.name }} Item</h2>
+
+<form method="post">
+    <select id="labDropdown" name="lab">
+        <option value="" disabled selected>Select Lab Name</option>
+        <option value="cclab">CC Lab</option>
+        <option value="ibmlab">IBM Lab</option>
+        <option value="islab">IS Lab</option>
+        <option value="projectlab">Project Lab</option>
+        <option value="wirelesslab">Wireless Lab</option>
+    </select>
+<br><br>
+    <!-- Dropdown for the "item" field -->
+    <select id="itemDropdown" name="item">
+        <option value="" disabled selected>Select an Item</option>
+        {% for item in items %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+</form>
+{% endblock content %}

@@ -5,6 +5,8 @@ from itertools import product
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
+from django import forms
+
 
 from .forms import BiometricForm, CameraForm, CctvForm, ChairForm, Connecting_WireForm, CpuForm, Extension_BoxForm, FanForm, MonitorForm, MouseForm, Network_SwitchForm, PrinterForm, Projector_ScreenForm, ProjectorForm, SocketForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
 from .forms import Update_BiometricForm, Update_CameraForm, Update_CctvForm, Update_ChairForm, Update_Connecting_WireForm, Update_CpuForm, Update_Extension_BoxForm, Update_FanForm, Update_MonitorForm, Update_MouseForm, Update_Network_SwitchForm, Update_PrinterForm, Update_Projector_ScreenForm, Update_ProjectorForm, Update_SocketForm,Update_TableForm,Update_BoardForm,Update_CupBoardForm,Update_KeyboardForm, Update_TubeLightForm
@@ -95,75 +97,83 @@ def add_item_form(request, item_id):
 
     return render(request, 'additemform.html',{'item': item,'form': form})
 
-def update_items(request):
-    categories = Category.objects.all()  # Get all categories
-    return render(request, 'updateitems.html', {'categories': categories})
-
-def update_item_list(request, category_id):
-    category = get_object_or_404(Category, pk=category_id)
-    items = Item.objects.filter(category=category)
-    return render(request, 'updateitemlist.html', {'category': category, 'items': items})
-
-
-def update_item_form(request, item_id):
-    item = get_object_or_404(Item, pk=item_id)
-    form = None
-
-    # Define which form to use based on item_id
-    if item_id == 1:
-        form_class = Update_TableForm
-    elif item_id == 2:
-        form_class = Update_ChairForm
-    elif item_id == 3:
-        form_class = Update_TubeLightForm
-    elif item_id == 4:
-        form_class = Update_FanForm
-    elif item_id == 5:
-        form_class = Update_CctvForm
-    elif item_id == 6:
-        form_class = Update_BiometricForm
-    elif item_id == 7:
-        form_class = Update_KeyboardForm
-    elif item_id == 8:
-        form_class = Update_MouseForm
-    elif item_id == 9:
-        form_class = Update_CameraForm
-    elif item_id == 10:
-        form_class = Update_BoardForm
-    elif item_id == 11:
-        form_class = Update_CupBoardForm
-    elif item_id == 12:
-        form_class = Update_MonitorForm
-    elif item_id == 13:
-        form_class = Update_CpuForm
-    elif item_id == 14:
-        form_class = Update_Network_SwitchForm
-    elif item_id == 15:
-        form_class = Update_ProjectorForm
-    elif item_id == 16:
-        form_class = Update_PrinterForm
-    elif item_id == 17:
-        form_class = Update_SocketForm
-    elif item_id == 18:
-        form_class = Update_Projector_ScreenForm
-    elif item_id == 19:
-        form_class = Update_Extension_BoxForm
-    elif item_id == 20:
-        form_class = Update_Connecting_WireForm
+def update(request):
+    items = Item.objects.all()
     if request.method == 'POST':
-        form = form_class(request.POST, instance=item)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'You have successfully updated the item.')
-            form = form_class()
-            # Clear the form by redirecting to the same page
-            return redirect('update_item_form',item_id=item_id)
-    else:
-        form = form_class()
-    if not request.method == 'POST' or form.errors:
-        form.novalidate = True
+        # Form submission logic
+        lab = request.POST.get('lab')
+        item_id = request.POST.get('item')
+        return redirect('update_items', lab=lab, item_id=item_id)
+    return render(request, 'update.html',{'items':items})
 
-    return render(request, 'updateitemform.html',{'item': item,'form': form})
+def update_items(request, lab, item_id):
+    item_name = Item.objects.filter(id=item_id).values_list('name', flat=True).first()
+
+    model_name_mapping = {
+        "Light": "Light",
+        "Fan": "Fan",
+        "Chair": "Chairs",
+        "Extension Box": "Extension_box",
+        "Connecting Wires": "Connecting_wire",
+        "Table": "Tables",
+        "CCTV": "Cctv",
+        # Add more mappings as needed
+    }
+
+    model_name = model_name_mapping.get(item_name)
+
+    try:
+        item_model = globals()[model_name]
+        filtered_ids = item_model.objects.filter(lab_name=lab).values_list('id', flat=True)
+    except KeyError:
+        filtered_ids = []
+
+    # Define a dictionary of form classes with their corresponding IDs
+    form_classes = {
+        1: Update_TableForm,
+        2: Update_ChairForm,
+        3: Update_TubeLightForm,
+        4: Update_FanForm,
+        5: Update_CctvForm,
+        6: Update_BiometricForm,
+        7: Update_KeyboardForm,
+        8: Update_MouseForm,
+        9: Update_CameraForm,
+        10: Update_BoardForm,
+        11: Update_CupBoardForm,
+        12: Update_MonitorForm,
+        13: Update_CpuForm,
+        14: Update_Network_SwitchForm,
+        15: Update_ProjectorForm,
+        16: Update_PrinterForm,
+        17: Update_SocketForm,
+        18: Update_Projector_ScreenForm,
+        19: Update_Extension_BoxForm,
+        20: Update_Connecting_WireForm,
+    }
+
+    form_class = form_classes.get(item_id, None)
+    initial_data = {
+        'lab_name': lab,
+    }
+
+    if form_class:
+        if request.method == 'POST':
+            form = form_class(request.POST)
+        else:
+            form = form_class(initial=initial_data)
+
+        # Modify the "id" field widget to be a dropdown
+        if 'id' in form.fields:
+            form.fields['id'].widget = forms.Select(choices=[(id, id) for id in filtered_ids])
+
+        if 'lab_name' in form.fields:
+            form.fields['lab_name'].widget.attrs['disabled'] = 'disabled'
+
+    else:
+        form = None  # Handle the case where form_class is not found
+
+    return render(request, 'updateitems.html', {'item_name': item_name, 'lab': lab, 'item_id': item_id, 'form': form})
 
 def lab_view(request, lab):
     template_name = f'{lab}.html'

@@ -6,34 +6,75 @@
 
 {% block content %}
 <style>
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
-        gap: 20px; /* Adjust the gap between grid items */
+    /* CSS for the form container */
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      background-color: #000;
     }
+  
+    /* CSS for form groups */
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+  
+    .label_style,
+    h2 {
+      font-weight: bold;
+      font-size: 30px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+  
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  
+    /* CSS for form inputs */
+    .form-group input[type="text"],
+    .form-group select {
+      padding: 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+  
+    /* CSS for form buttons */
+    .form-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+  
+    /* Media query for responsiveness */
+    @media (max-width: 768px) {
+      .form-container {
+        max-width: 100%;
+      }
+    }
+  </style>
+<h2>Update the {{ item_name }} Items</h2>
 
-    .category-item {
-        text-align: center; /* Center-align the content within each grid item */
-        border: 1px solid #ccc; /* Add borders for each grid item (optional) */
-        padding: 10px;
-    }
-
-    .category-image {
-        max-width: 100%; /* Ensure the image doesn't exceed the grid item's width */
-        height: auto; /* Maintain the image's aspect ratio */
-    }
-</style>
-<center>
-<div class="category-grid">
-    {% for category in categories %}
-        <div class="category-item">
-            <h3>{{ category.name }}</h3>
-            <img class="category-image" src="{{ category.image.url }}" alt="{{ category.name }}"><br><br>
-            <a href="{% url 'update_item_list' category.id %}">
-                <button class="ghost-pink">UPDATE ITEMS</button>
-            </a>
+<div class="form-container">
+    <form method="post" novalidate class="item-form">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+  
+      {% for field in form %}
+      <div class="form-group">
+        <label class="label_style" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+      </div>
+      {% endfor %}
+      <center>
+        <div class="form-actions">
+          <input class="ghost-pink" type="submit" value="Update Item">
         </div>
-    {% endfor %}
-</div>
-</center>
+     
+    </form>
+  
+    <br>
 {% endblock content %}
