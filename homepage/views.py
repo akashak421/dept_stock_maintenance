@@ -11,7 +11,7 @@ from django import forms
 from .forms import BiometricForm, CameraForm, CctvForm, ChairForm, Connecting_WireForm, CpuForm, Extension_BoxForm, FanForm, MonitorForm, MouseForm, Network_SwitchForm, PrinterForm, Projector_ScreenForm, ProjectorForm, SocketForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
 from .forms import Update_BiometricForm, Update_CameraForm, Update_CctvForm, Update_ChairForm, Update_Connecting_WireForm, Update_CpuForm, Update_Extension_BoxForm, Update_FanForm, Update_MonitorForm, Update_MouseForm, Update_Network_SwitchForm, Update_PrinterForm, Update_Projector_ScreenForm, Update_ProjectorForm, Update_SocketForm,Update_TableForm,Update_BoardForm,Update_CupBoardForm,Update_KeyboardForm, Update_TubeLightForm
 
-from homepage.models import Category, Item, Chairs, Tables, Projector, Printer, Network_Switch, Projector_Screen
+from homepage.models import Category, Item, Chairs, Tables, Projector, Printer, Network_Switch, Projector_Screen, Fan, TubeLight,Cctv,Biometric,Keyboard,Mouse,Camera,Board,Cupboard,Monitor,Cpu,Socket,Extension_Box,Connecting_Wire
 
 
 class HomeView(View):
@@ -110,15 +110,27 @@ def update_items(request, lab, item_id):
     item_name = Item.objects.filter(id=item_id).values_list('name', flat=True).first()
 
     model_name_mapping = {
-        "Light": "Light",
+        "TubeLight": "TubeLight",
         "Fan": "Fan",
         "Chair": "Chairs",
         "Extension Box": "Extension_box",
         "Connecting Wires": "Connecting_wire",
         "Table": "Tables",
         "CCTV": "Cctv",
-        # Add more mappings as needed
-    }
+        "Biometric":"Biometric",
+        "Board":"Board",
+        "Camera":"Camera",
+        "CPU":"Cpu",
+        "Cupboard":"Cupboard",
+        "Keyboard":"Keyboard",
+        "Monitor":"Monitor",
+        "Mouse":"Mouse",
+        "Network switch":"Network_switch",
+        "Printer":"Printer",
+        "Projector":"Projector",
+        "Screen":"Projector_screen",
+        "Socket":"Socket"
+        }
 
     model_name = model_name_mapping.get(item_name)
 
@@ -127,6 +139,8 @@ def update_items(request, lab, item_id):
         filtered_ids = item_model.objects.filter(lab_name=lab).values_list('id', flat=True)
     except KeyError:
         filtered_ids = []
+    print(model_name)
+    print(filtered_ids)
 
     # Define a dictionary of form classes with their corresponding IDs
     form_classes = {
@@ -183,20 +197,20 @@ def lab_view(request, lab):
     printer_count = Printer.objects.filter(lab_name=lab).count()
     switch_count = Network_Switch.objects.filter(lab_name=lab).count()
     screen_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    biometric_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    tubelight_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    fan_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    cctv_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    keyboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    mouse_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    camera_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    board_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    cupboard_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    monitor_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    cpu_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    socket_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    extension_box_count = Projector_Screen.objects.filter(lab_name=lab).count()
-    connecting_wire_count = Projector_Screen.objects.filter(lab_name=lab).count()
+    biometric_count = Biometric.objects.filter(lab_name=lab).count()
+    tubelight_count = TubeLight.objects.filter(lab_name=lab).count()
+    fan_count = Fan.objects.filter(lab_name=lab).count()
+    cctv_count = Cctv.objects.filter(lab_name=lab).count()
+    keyboard_count = Keyboard.objects.filter(lab_name=lab).count()
+    mouse_count = Mouse.objects.filter(lab_name=lab).count()
+    camera_count = Camera.objects.filter(lab_name=lab).count()
+    board_count = Board.objects.filter(lab_name=lab).count()
+    cupboard_count = Cupboard.objects.filter(lab_name=lab).count()
+    monitor_count = Monitor.objects.filter(lab_name=lab).count()
+    cpu_count = Cpu.objects.filter(lab_name=lab).count()
+    socket_count = Socket.objects.filter(lab_name=lab).count()
+    extension_box_count = Extension_Box.objects.filter(lab_name=lab).count()
+    connecting_wire_count = Connecting_Wire.objects.filter(lab_name=lab).count()
 
     # Define category options
     arm_categories = ['with_arm', 'without_arm']
