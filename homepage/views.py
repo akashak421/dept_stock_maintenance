@@ -8,6 +8,7 @@ from xhtml2pdf import pisa
 from django import forms
 
 
+
 from .forms import BiometricForm, CameraForm, CctvForm, ChairForm, Connecting_WireForm, CpuForm, Extension_BoxForm, FanForm, MonitorForm, MouseForm, Network_SwitchForm, PrinterForm, Projector_ScreenForm, ProjectorForm, SocketForm,TableForm,BoardForm,CupBoardForm,KeyboardForm, TubeLightForm
 from .forms import Update_BiometricForm, Update_CameraForm, Update_CctvForm, Update_ChairForm, Update_Connecting_WireForm, Update_CpuForm, Update_Extension_BoxForm, Update_FanForm, Update_MonitorForm, Update_MouseForm, Update_Network_SwitchForm, Update_PrinterForm, Update_Projector_ScreenForm, Update_ProjectorForm, Update_SocketForm,Update_TableForm,Update_BoardForm,Update_CupBoardForm,Update_KeyboardForm, Update_TubeLightForm
 
@@ -329,3 +330,84 @@ def render_to_pdf(template_path, context_dict):
     if pisa_status.err:
         return HttpResponse('We had some errors with code %s <pre>%s</pre>' % (pisa_status.err, html))
     return response
+
+
+def display_date(request):
+    if request.method == 'POST':
+        from_date = request.POST.get('from_date')
+        to_date = request.POST.get('to_date')
+
+        # Assuming your model has a DateTimeField called 'created_at' for the creation date
+        # Filter records based on the selected date range
+        table_records = Tables.objects.filter(created_at__range=[from_date, to_date])
+        chair_records = Chairs.objects.filter(created_at__range=[from_date, to_date])
+        cupboard_records = Cupboard.objects.filter(created_at__range=[from_date, to_date])
+        keyboard_records = Keyboard.objects.filter(created_at__range=[from_date, to_date])
+        Mouse_records = Mouse.objects.filter(created_at__range=[from_date, to_date])
+        camera_records = Camera.objects.filter(created_at__range=[from_date, to_date])
+        tubelight_records = TubeLight.objects.filter(created_at__range=[from_date, to_date])
+        fan_records = Fan.objects.filter(created_at__range=[from_date, to_date])
+        cctv_records = Cctv.objects.filter(created_at__range=[from_date, to_date])
+        bio_records = Biometric.objects.filter(created_at__range=[from_date, to_date])
+        monitor_records = Monitor.objects.filter(created_at__range=[from_date, to_date])
+        cpu_records = Cpu.objects.filter(created_at__range=[from_date, to_date])
+        Network_Switch_records = Network_Switch.objects.filter(created_at__range=[from_date, to_date])
+        projector_records = Projector.objects.filter(created_at__range=[from_date, to_date])
+        printer_records = Printer.objects.filter(created_at__range=[from_date, to_date])
+        socket_records = Socket.objects.filter(created_at__range=[from_date, to_date])
+        pro_screen_records = Projector_Screen.objects.filter(created_at__range=[from_date, to_date])
+        ex_box_records = Extension_Box.objects.filter(created_at__range=[from_date, to_date])
+        con_wire_records = Connecting_Wire.objects.filter(created_at__range=[from_date, to_date])
+
+        board_records = Board.objects.filter(created_at__range=[from_date, to_date])
+        chair_count = Chairs.objects.filter(created_at__range=[from_date, to_date]).count()
+
+        # Calculate counts for various items
+        # chair_count = records.filter(item_type='Chairs').count()
+        # table_count = records.filter(item_type='Tables').count()
+        # ... other item counts ...
+
+        table_count = table_records.count()  # Total number of products
+
+        context = {
+            'Name_of_the_lab': 'Your Lab Name',
+            'chair_count': chair_count,
+            'board_records':board_records,
+            'table_count': table_count,
+            'table_records': table_records,
+            'chair_records':chair_records,
+            'cupboard_records':cupboard_records,
+            'keyboard_records':keyboard_records,
+            'Mouse_records':Mouse_records,
+            'camera_records':camera_records,
+            'tubelight_records':tubelight_records,
+            'fan_records':fan_records,
+            'cctv_records':cctv_records,
+            'bio_records':bio_records,
+            'monitor_records':monitor_records,
+            'cpu_records':cpu_records,
+            'Network_Switch_records':Network_Switch_records,
+            'projector_records':projector_records,
+            'printer_records':printer_records,
+            'socket_records':socket_records,
+            'pro_screen_records':pro_screen_records,
+            'ex_box_records':ex_box_records,
+            'con_wire_records':con_wire_records,
+            
+          
+        }
+        pdf = render_to_pdf('display_date.html',context)
+
+        return HttpResponse(pdf, content_type='application/pdf')
+
+        
+
+    return render(request, 'display_date.html')
+
+def fetch_date(request): 
+    return render(request, 'fetch_date.html')
+
+
+
+# def my_template_view(request):
+#     return render(request, 'mytemplate.html')
