@@ -1,5 +1,6 @@
 from django.db import models
 from django.db import models
+from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -49,6 +50,8 @@ class Chairs(models.Model):
     arm_type = models.CharField(max_length=20, choices=ARM_CHOICES)
     material_type = models.CharField(max_length=20, choices=MATERIAL_CHOICES)
     roll_type = models.CharField(max_length=20, choices=ROLLING_CHOICES)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
 
     STATUS_CHOICES = (
         ('available', 'Available'),
@@ -79,6 +82,8 @@ class Chairs(models.Model):
 
 class Tables(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -129,6 +134,8 @@ class Tables(models.Model):
 
 class Board(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -183,6 +190,8 @@ class Board(models.Model):
 
 class Cupboard(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -242,6 +251,8 @@ class Cupboard(models.Model):
 
 class Keyboard(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -297,6 +308,8 @@ class Keyboard(models.Model):
 
 class Mouse(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -352,6 +365,8 @@ class Mouse(models.Model):
 
 class Camera(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -409,6 +424,8 @@ class Camera(models.Model):
 
 class TubeLight(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -456,6 +473,8 @@ class TubeLight(models.Model):
 
 class Fan(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -503,6 +522,8 @@ class Fan(models.Model):
 
 class Cctv(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -557,6 +578,8 @@ class Cctv(models.Model):
 
 class Biometric(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -621,6 +644,8 @@ class Biometric(models.Model):
 
 class Monitor(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -674,6 +699,8 @@ class Monitor(models.Model):
 
 class Cpu(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -719,6 +746,8 @@ class Cpu(models.Model):
 
 class Network_Switch(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -789,6 +818,8 @@ class Network_Switch(models.Model):
 
 class Projector(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -846,6 +877,8 @@ class Projector(models.Model):
 
 class Printer(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
 
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
@@ -906,6 +939,8 @@ class Printer(models.Model):
 
 class Socket(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -967,6 +1002,8 @@ class Socket(models.Model):
 
 class Projector_Screen(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
         ('ibmlab', 'IBM Lab'),
@@ -1016,6 +1053,8 @@ class Projector_Screen(models.Model):
 
 class Extension_Box(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
 
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),
@@ -1081,6 +1120,8 @@ class Extension_Box(models.Model):
 
 class Connecting_Wire(models.Model):
     id=models.CharField(max_length=14,primary_key=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
 
     LAB_CHOICES = (
         ('cclab', 'CC Lab'),

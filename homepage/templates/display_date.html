@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Your CSS styles for the PDF content */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1{
+            font-size: 18px;
+        }
+        /* Add styles for the header */
+        .header {
+            text-align :center;
+            margin-bottom :20px;
+            font-size :24px;
+            font-weight: bold;
+        }
+
+        table {
+            width :100%;
+            border-collapse: collapse;
+            margin-bottom :20px;
+        }
+
+        table, th, td {
+            border :1px solid black;
+        }
+
+        th, td {
+            padding: 5px;
+            width :50%;
+            font-size :13px;
+            text-align :center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        PSG College of Technology<br>
+        Department of Computer Applications<br>
+        Lab Stock Maintenance
+    </div>
+
+    <!-- Content Table -->
+    <center>
+        <h1>{{Name_of_the_lab}}</h1><br>
+        <table>
+            <tr>
+                <th>Item Type</th>
+                <th>Count</th>
+            </tr>
+            <tr>
+                <td>Chairs</td>
+                <td>{{ chair_count }}</td>
+            </tr>
+            <tr>
+                <td>Tables</td>
+                <td>{{ table_count }}</td>
+            </tr>
+        </table>
+        <!-- FOR FETCHING TABLE .html -->
+        <table>
+            <center><h1>TABLE</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>Table Type</th>
+                    <th>ID</th>
+                    <th>Material Type</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for table_record in table_records %}
+                    <tr>
+                        <td>{{ table_record.lab_name }}</td>
+                        <td>{{ table_record.table_type }}</td>
+                        <td>{{ table_record.id }}</td>
+                        <td>{{ table_record.material_type }}</td>
+                        <td>{{ table_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+        <!-- FOR FETCHING CHAIR .html -->
+        <table>
+            <center><h1>CHAIR</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>arm_type</th>
+                    <th>ID</th>
+                    <th>Material Type</th>
+                    <th>roll_type</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for chair_record in chair_records %}
+                    <tr>
+                        <td>{{ chair_record.lab_name }}</td>
+                        <td>{{ chair_record.arm_type }}</td>
+                        <td>{{ chair_record.id }}</td>
+                        <td>{{ chair_record.material_type }}</td>
+                        <td>{{ chair_record.roll_type }}</td>
+                        <td>{{ chair_record.created_at }}</td>                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+        <!-- FOR FETCHING Board .html -->
+        <table>
+            <center><h1>BOARD</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>board_type</th>
+                    <th>ID</th>
+                    <th>Material Type</th>
+                    <th>installation_type</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for board_record in board_records %}
+                    <tr>
+                        <td>{{ board_record.lab_name }}</td>
+                        <td>{{ board_record.board_type }}</td>
+                        <td>{{ board_record.id }}</td>
+                        <td>{{ board_record.material_type }}</td>
+                        <td>{{ board_record.installation_type }}</td>
+                        <td>{{ board_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+
+        <!-- FOR FETCHING Cupboard .html -->
+        <table>
+            <center><h1>CUPBOARD</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>cupboard_type</th>
+                    <th>ID</th>
+                    <th>size</th>
+                    <th>door_type</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cupboard_record in cupboard_records %}
+                    <tr>
+                        <td>{{ cupboard_record.lab_name }}</td>
+                        <td>{{ cupboard_record.cupboard_type }}</td>
+                        <td>{{ cupboard_record.id }}</td>
+                        <td>{{ cupboard_record.size }}</td>
+                        <td>{{ cupboard_record.door_type }}</td>
+                        <td>{{ cupboard_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+        </center>
+
+<center>
+         <!-- FOR FETCHING Keyboard-->
+         <table>
+            <center><h1>KEYBOARD</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>keyboard_type</th>
+                    <th>ID</th>
+                    <th>brand</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for keyboard_record in keyboard_records %}
+                    <tr>
+                        <td>{{ keyboard_record.lab_name }}</td>
+                        <td>{{ keyboard_record.keyboard_type }}</td>
+                        <td>{{ keyboard_record.id }}</td>
+                        <td>{{ keyboard_record.brand }}</td>
+                        <td>{{ keyboard_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        
+</center>
+
+
+<center>
+         <!-- FOR FETCHING Mouse .html -->
+         <table>
+            <center><h1>MOUSE</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>mouse_type</th>
+                    <th>ID</th>
+                    <th>brand</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Mouse_record in Mouse_records %}
+                    <tr>
+                        <td>{{ Mouse_record.lab_name }}</td>
+                        <td>{{ Mouse_record.mouse_type }}</td>
+                        <td>{{ Mouse_record.id }}</td>
+                        <td>{{ Mouse_record.brand }}</td>
+                        <td>{{ Mouse_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+ </center>
+
+
+<center>
+         <!-- FOR FETCHING Camera .html -->
+         <table>
+            <center><h1>CAMERA</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>web_cam_type</th>
+                    <th>ID</th>
+                    <th>brand</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for camera_record in camera_records %}
+                    <tr>
+                        <td>{{ camera_record.lab_name }}</td>
+                        <td>{{ camera_record.web_cam_type }}</td>
+                        <td>{{ camera_record.id }}</td>
+                        <td>{{ camera_record.brand }}</td>
+                        <td>{{ camera_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+</center>
+
+<center>
+
+         <!-- FOR FETCHING TubeLight .html -->
+         <table>
+            <center><h1>TUBELIGHT</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>light_type</th>
+                    <th>ID</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tubelight_record in tubelight_records %}
+                    <tr>
+                        <td>{{ tubelight_record.lab_name }}</td>
+                        <td>{{ tubelight_record.light_type }}</td>
+                        <td>{{ tubelight_record.id }}</td>
+                        <td>{{ tubelight_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+</center>
+<center>
+
+         <!-- FOR FETCHING fan .html -->
+         <table>
+            <center><h1>FAN</h1></center>
+
+            <thead>
+                <tr>
+                    <th>Lab Name</th>
+                    <th>fan_type</th>
+                    <th>ID</th>
+                    <th>Created At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fan_record in fan_records %}
+                    <tr>
+                        <td>{{ fan_record.lab_name }}</td>
+                        <td>{{ fan_record.fan_type }}</td>
+                        <td>{{ fan_record.id }}</td>
+                        <td>{{ fan_record.created_at }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No records found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+
+</center>
+
+
+
+
+<center>
+
+    <!-- FOR FETCHING Cctv .html -->
+    <table>
+       <center><h1>CCTV</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+               <th>camera_type</th>
+               <th>ID</th>
+               <th>camera_mode</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for cctv_record in cctv_records %}
+               <tr>
+                   <td>{{ cctv_record.lab_name }}</td>
+                   <td>{{ cctv_record.camera_type }}</td>
+                   <td>{{ cctv_record.id }}</td>
+                   <td>{{ cctv_record.camera_mode }}</td>
+                   <td>{{ cctv_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+<center>
+
+    <!-- FOR FETCHING Biometric .html -->
+    <table>
+       <center><h1>BIOMETRIC</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+               <th>biometric_type</th>
+               <th>ID</th>
+               <th>brand</th>
+               <th>model</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for bio_record in bio_records %}
+               <tr>
+                   <td>{{ bio_record.lab_name }}</td>
+                   <td>{{ bio_record.biometric_type }}</td>
+                   <td>{{ bio_record.id }}</td>
+                   <td>{{ bio_record.brand }}</td>
+                   <td>{{ bio_record.model }}</td>
+                   <td>{{ bio_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+<center>
+
+    <!-- FOR FETCHING Monitor .html -->
+    <table>
+       <center><h1>MONITOR</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+               
+               <th>ID</th>
+               <th>brand</th>
+               <th>model</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for monitor_record in monitor_records %}
+               <tr>
+                   <td>{{ monitor_record.lab_name }}</td>
+                  
+                   <td>{{ monitor_record.id }}</td>
+                   <td>{{ monitor_record.brand }}</td>
+                   <td>{{ monitor_record.model }}</td>
+                   <td>{{ monitor_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+<center>
+
+    <!-- FOR FETCHING Cpu .html -->
+    <table>
+       <center><h1>CPU</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+              
+               <th>ID</th>
+               <th>brand</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for cpu_record in cpu_records %}
+               <tr>
+                   <td>{{ cpu_record.lab_name }}</td>
+                   <td>{{ cpu_record.id }}</td>
+                   <td>{{ cpu_record.brand }}</td>
+                   <td>{{ cpu_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+
+<center>
+
+    <!-- FOR FETCHING Network_Switch .html -->
+    <table>
+       <center><h1>NETWORK SWITCH</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+               <th>switch_type</th>
+               <th>ID</th>
+               <th>brand</th>
+               <th>model</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for Network_Switch_record in Network_Switch_records %}
+               <tr>
+                   <td>{{ Network_Switch_record.lab_name }}</td>
+                   <td>{{ Network_Switch_record.switch_type }}</td>
+                   <td>{{ Network_Switch_record.id }}</td>
+                   <td>{{ Network_Switch_record.brand }}</td>
+                   <td>{{ Network_Switch_record.model }}</td>
+                   <td>{{ Network_Switch_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+<center>
+
+    <!-- FOR FETCHING Projector .html -->
+    <table>
+       <center><h1>PROJECTOR</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+              
+               <th>ID</th>
+               <th>brand</th>
+               <th>mounting_options</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for projector_record in projector_records %}
+               <tr>
+                   <td>{{ projector_record.lab_name }}</td>
+                   <td>{{ projector_record.id }}</td>
+                   <td>{{ projector_record.brand }}</td>
+                   <td>{{ projector_record.mounting_options }}</td>
+                   <td>{{ projector_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+<center>
+
+    <!-- FOR FETCHING Printer .html -->
+    <table>
+       <center><h1>PRINTER</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+              
+               <th>ID</th>
+               <th>brand</th>
+               <th>model</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for printer_record in printer_records %}
+               <tr>
+                   <td>{{ printer_record.lab_name }}</td>
+                   <td>{{ printer_record.id }}</td>
+                   <td>{{ printer_record.brand }}</td>
+                   <td>{{ printer_record.model }}</td>
+                   <td>{{ printer_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+<center>
+
+    <!-- FOR FETCHING Socket .html -->
+    <table>
+       <center><h1>SOCKET</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+              
+               <th>ID</th>
+               <th>material_type</th>
+               <th>model</th>
+               <th>brand</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for socket_record in socket_records %}
+               <tr>
+                   <td>{{ socket_record.lab_name }}</td>
+                   <td>{{ socket_record.id }}</td>
+                   <td>{{ socket_record.material_type }}</td>
+                   <td>{{ socket_record.model }}</td>
+                   <td>{{ socket_record.brand }}</td>
+                   <td>{{ socket_record.capacity }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+<center>
+
+    <!-- FOR FETCHING Projector_Screen .html -->
+    <table>
+       <center><h1>PROJECTOR SCREEN</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+              
+               <th>ID</th>
+               <th>brand</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for pro_screen_record in pro_screen_records %}
+               <tr>
+                   <td>{{ pro_screen_record.lab_name }}</td>
+                   <td>{{ pro_screen_record.id }}</td>
+                   <td>{{ pro_screen_record.brand }}</td>
+                   <td>{{ pro_screen_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+<center>
+
+    <!-- FOR FETCHING Extension_Box .html -->
+    <table>
+       <center><h1>EXTENSION BOX</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+              
+               <th>ID</th>
+               <th>material_type</th>
+               <th>model</th>
+               <th>ampere_rating</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for ex_box_record in ex_box_records %}
+               <tr>
+                   <td>{{ ex_box_record.lab_name }}</td>
+                   <td>{{ ex_box_record.id }}</td>
+                   <td>{{ ex_box_record.material_type }}</td>
+                   <td>{{ ex_box_record.model }}</td>
+                   <td>{{ ex_box_record.ampere_rating }}</td>
+
+                   <td>{{ pro_screen_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+
+
+
+<center>
+
+    <!-- FOR FETCHING Connecting_Wire .html -->
+    <table>
+       <center><h1>CONNECTING WIRE</h1></center>
+
+       <thead>
+           <tr>
+               <th>Lab Name</th>
+              
+               <th>ID</th>
+               <th>wire_type</th>
+               <th>quantity</th>
+               <th>Created At</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for con_wire_record in con_wire_records %}
+               <tr>
+                   <td>{{ con_wire_record.lab_name }}</td>
+                   <td>{{ con_wire_record.id }}</td>
+                   <td>{{ con_wire_record.wire_type }}</td>
+                   <td>{{ con_wire_record.quantity }}</td>
+
+                   <td>{{ con_wire_record.created_at }}</td>
+               </tr>
+           {% empty %}
+               <tr>
+                   <td colspan="5">No records found.</td>
+               </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+   
+
+</center>
+</body>
+</html>

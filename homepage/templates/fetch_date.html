@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch with date</title>
+</head>
+<body>
+    <form method="post" action="{% url 'display_date' %}">
+        {% csrf_token %}
+        <label for="from_date">From Date:</label> 
+        <input type="date" name="from_date" id="from_date">
+    
+        <label for="to_date">To Date:</label>
+        <input type="date" name="to_date" id="to_date">
+    
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
