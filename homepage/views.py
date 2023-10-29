@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import View
 from django.contrib import messages
 from itertools import product
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django import forms
@@ -175,6 +175,22 @@ def update_items(request, lab, item_id):
     if form_class:
         if request.method == 'POST':
             form = form_class(request.POST)
+            print("hello")
+            if form.is_valid():
+                selected_id = form.cleaned_data['id']
+                try:
+                    # Try to retrieve the existing item with the selected ID
+                    to_update = item_model.objects.get(id=selected_id)
+                except item_model.DoesNotExist:
+                    # If the item doesn't exist, you can handle it here, for example:
+                    raise Http404("Item with the selected ID does not exist")
+
+                for field_name, field_value in form.cleaned_data.items():
+                    setattr(to_update, field_name, field_value)
+                to_update.save()
+
+            else:
+                print(form.errors)
         else:
             form = form_class(initial=initial_data)
 
@@ -182,8 +198,8 @@ def update_items(request, lab, item_id):
         if 'id' in form.fields:
             form.fields['id'].widget = forms.Select(choices=[(id, id) for id in filtered_ids])
 
-        if 'lab_name' in form.fields:
-            form.fields['lab_name'].widget.attrs['disabled'] = 'disabled'
+        # if 'lab_name' in form.fields:
+        #     form.fields['lab_name'].widget.attrs['disabled'] = 'disabled'
 
     else:
         form = None  # Handle the case where form_class is not found
