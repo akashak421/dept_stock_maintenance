@@ -143,7 +143,6 @@ def update_items(request, lab, item_id):
     print(model_name)
     print(filtered_ids)
 
-    # Define a dictionary of form classes with their corresponding IDs
     form_classes = {
         1: Update_TableForm,
         2: Update_ChairForm,
@@ -179,10 +178,8 @@ def update_items(request, lab, item_id):
             if form.is_valid():
                 selected_id = form.cleaned_data['id']
                 try:
-                    # Try to retrieve the existing item with the selected ID
                     to_update = item_model.objects.get(id=selected_id)
                 except item_model.DoesNotExist:
-                    # If the item doesn't exist, you can handle it here, for example:
                     raise Http404("Item with the selected ID does not exist")
 
                 for field_name, field_value in form.cleaned_data.items():
@@ -194,15 +191,12 @@ def update_items(request, lab, item_id):
         else:
             form = form_class(initial=initial_data)
 
-        # Modify the "id" field widget to be a dropdown
         if 'id' in form.fields:
             form.fields['id'].widget = forms.Select(choices=[(id, id) for id in filtered_ids])
 
-        # if 'lab_name' in form.fields:
-        #     form.fields['lab_name'].widget.attrs['disabled'] = 'disabled'
 
     else:
-        form = None  # Handle the case where form_class is not found
+        form = None
 
     return render(request, 'updateitems.html', {'item_name': item_name, 'lab': lab, 'item_id': item_id, 'form': form})
 
