@@ -87,7 +87,8 @@ def add_item_form(request, item_id):
         form = form_class(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'You have successfully added the item.')
+            # messages.success(request, 'You have successfully added the item.')
+            show_success_message = True
             form = form_class()
             # Clear the form by redirecting to the same page
             return redirect('add_item_form',item_id=item_id)
@@ -171,28 +172,31 @@ def update_items(request, lab, item_id):
         'lab_name': lab,
     }
 
-    if form_class:
-        if request.method == 'POST':
-            form = form_class(request.POST)
-            print("hello")
-            if form.is_valid():
-                selected_id = form.cleaned_data['id']
+    if request.method == 'POST':
+        form = form_class(request.POST)
+        print(request.POST)
+        if form.is_valid() or request.POST.get('submit_with_errors') == '1':
+            selected_id = form.instance.id
+            if item_model.objects.filter(id=selected_id).exists():
                 try:
                     to_update = item_model.objects.get(id=selected_id)
                 except item_model.DoesNotExist:
                     raise Http404("Item with the selected ID does not exist")
-
                 for field_name, field_value in form.cleaned_data.items():
                     setattr(to_update, field_name, field_value)
                 to_update.save()
-
+                messages.success(request, 'The Item has been successfully updated')
             else:
-                print(form.errors)
+                # Print or log a message to confirm that the ID doesn't exist
+                print(f"Item with ID {selected_id} does not exist in the database")
         else:
-            form = form_class(initial=initial_data)
+            print(form.errors)
+    else:
+        form = form_class(initial=initial_data)
 
-        if 'id' in form.fields:
-            form.fields['id'].widget = forms.Select(choices=[(id, id) for id in filtered_ids])
+    if 'id' in form.fields:
+        form.fields['id'].widget = forms.Select(choices=[(id, id) for id in filtered_ids])
+
 
 
     else:

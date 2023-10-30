@@ -54,6 +54,12 @@
     }
   }
 </style>
+{% if messages %}
+    <div class="alert alert-success">
+        You have Successfully added the Item
+    </div>
+    <meta http-equiv="refresh" content="5;url={{ request.path }}">
+{% endif %}
 <div class="form-container">
   <center>
     <h2>Add the {{ item.name }} Item </h2>

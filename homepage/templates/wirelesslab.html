@@ -2,141 +2,167 @@
 {% block title %} Lab Items {% endblock title %}
 
 {% block content %}
-    <center>
-        <h1>Wireless LAB</h1><br>
-        <table>
-            <tr>
-                <th class="item">Item</th>
-                <th class="colon"></th> {# An empty th for spacing #}
-                <th class="count">Count</th>
-            </tr>
-            <tr>
-                <td class="item">Number of Chairs</td>
-                <td class="colon">:</td> {# Separate td for the colon #}
-                <td class="count">{{ chair_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Tables</td>
-                <td class="colon">:</td>
-                <td class="count">{{ table_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Projectors</td>
-                <td class="colon">:</td>
-                <td class="count">{{ projector_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Printers</td>
-                <td class="colon">:</td>
-                <td class="count">{{ printer_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Network Switches</td>
-                <td class="colon">:</td>
-                <td class="count">{{ switch_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Projector Screens</td>
-                <td class="colon">:</td>
-                <td class="count">{{ screen_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Biometric Devices</td>
-                <td class="colon">:</td>
-                <td class="count">{{ biometric_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Tube Lights</td>
-                <td class="colon">:</td>
-                <td class="count">{{ tubelight_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Fans</td>
-                <td class="colon">:</td>
-                <td class="count">{{ fan_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of CCTV Cameras</td>
-                <td class="colon">:</td>
-                <td class="count">{{ cctv_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Keyboards</td>
-                <td class="colon">:</td>
-                <td class="count">{{ keyboard_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Mice</td>
-                <td class="colon">:</td>
-                <td class="count">{{ mouse_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Cameras</td>
-                <td class="colon">:</td>
-                <td class="count">{{ camera_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Boards</td>
-                <td class="colon">:</td>
-                <td class="count">{{ board_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Cupboards</td>
-                <td class="colon">:</td>
-                <td class="count">{{ cupboard_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Monitors</td>
-                <td class="colon">:</td>
-                <td class="count">{{ monitor_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of CPUs</td>
-                <td class="colon">:</td>
-                <td class="count">{{ cpu_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Sockets</td>
-                <td class="colon">:</td>
-                <td class="count">{{ socket_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Extension Boxes</td>
-                <td class="colon">:</td>
-                <td class="count">{{ extension_box_count }}</td>
-            </tr>
-            <tr>
-                <td class="item">Number of Connecting Wires</td>
-                <td class="colon">:</td>
-                <td class="count">{{ connecting_wire_count }}</td>
-            </tr>
-        </table>
-    </center>
+<style>
+    td, th {
+        text-align: center;
+        padding: 10px; /* Adjust this value to control spacing */
+        color: white;
+    }
 
-    <h2>Chair Counts:</h2>
+    table {
+        margin: 20px; /* Adjust this value to control space between items */
+        width: 40%; /* Make the table take full width */
+    }
+
+    td.colon {
+        padding: 0 10px; /* Adjust this value to control spacing for the colon */
+    }
+
+    td.item {
+        text-align: left;
+    }
+
+    td.count {
+        text-align: center;
+    }
+</style>
+<center>
+    <h1>WIRELESS LAB</h1><br>
     <table>
         <tr>
-            <th class="item">Combination</th>
+            <th class="item">Item</th>
             <th class="colon"></th> {# An empty th for spacing #}
             <th class="count">Count</th>
         </tr>
-        {% for combination, count in chair_counts.items %}
         <tr>
-            <td class="item">Material</td>
+            <td class="item">Number of Chairs</td>
             <td class="colon">:</td> {# Separate td for the colon #}
-            <td class="count">{{ combination.0 }}</td>
-            <td class="item">Arms</td>
-            <td class="colon">:</td>
-            <td class="count">{{ combination.1 }}</td>
-            <td class="item">Rolling</td>
-            <td class="colon">:</td>
-            <td class="count">{{ combination.2 }}</td>
-            <td class="item">Count</td>
-            <td class="colon">:</td>
-            <td class="count">{{ count }}</td>
+            <td class="count">{{ chair_count }}</td>
         </tr>
-        {% endfor %}
+        <tr>
+            <td class="item">Number of Tables</td>
+            <td class="colon">:</td>
+            <td class="count">{{ table_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Projectors</td>
+            <td class="colon">:</td>
+            <td class="count">{{ projector_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Printers</td>
+            <td class="colon">:</td>
+            <td class="count">{{ printer_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Network Switches</td>
+            <td class="colon">:</td>
+            <td class="count">{{ switch_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Projector Screens</td>
+            <td class="colon">:</td>
+            <td class="count">{{ screen_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Biometric Devices</td>
+            <td class="colon">:</td>
+            <td class="count">{{ biometric_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Tube Lights</td>
+            <td class="colon">:</td>
+            <td class="count">{{ tubelight_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Fans</td>
+            <td class="colon">:</td>
+            <td class="count">{{ fan_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of CCTV Cameras</td>
+            <td class="colon">:</td>
+            <td class="count">{{ cctv_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Keyboards</td>
+            <td class="colon">:</td>
+            <td class="count">{{ keyboard_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Mice</td>
+            <td class="colon">:</td>
+            <td class="count">{{ mouse_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Cameras</td>
+            <td class="colon">:</td>
+            <td class="count">{{ camera_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Boards</td>
+            <td class="colon">:</td>
+            <td class="count">{{ board_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Cupboards</td>
+            <td class="colon">:</td>
+            <td class="count">{{ cupboard_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Monitors</td>
+            <td class="colon">:</td>
+            <td class="count">{{ monitor_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of CPUs</td>
+            <td class="colon">:</td>
+            <td class="count">{{ cpu_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Sockets</td>
+            <td class="colon">:</td>
+            <td class="count">{{ socket_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Extension Boxes</td>
+            <td class="colon">:</td>
+            <td class="count">{{ extension_box_count }}</td>
+        </tr>
+        <tr>
+            <td class="item">Number of Connecting Wires</td>
+            <td class="colon">:</td>
+            <td class="count">{{ connecting_wire_count }}</td>
+        </tr>
     </table>
+</center>
+
+<h2>Chair Counts:</h2>
+<table>
+    <tr>
+        <th class="item">Combination</th>
+        <th class="colon"></th> {# An empty th for spacing #}
+        <th class="count">Count</th>
+    </tr>
+    {% for combination, count in chair_counts.items %}
+    <tr>
+        <td class="item">Material</td>
+        <td class="colon">:</td> {# Separate td for the colon #}
+        <td class="count">{{ combination.0 }}</td>
+        <td class="item">Arms</td>
+        <td class="colon">:</td>
+        <td class="count">{{ combination.1 }}</td>
+        <td class="item">Rolling</td>
+        <td class="colon">:</td>
+        <td class="count">{{ combination.2 }}</td>
+        <td class="item">Count</td>
+        <td class="colon">:</td>
+        <td class="count">{{ count }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Add similar tables for other item categories -->
 </body>
 </html>
 
